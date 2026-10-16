@@ -1,0 +1,217 @@
+{
+  "name": "mttaal",
+  "crs": "EPSG:32651",
+  "origin": [
+    258931.5332366681,
+    1524362.3778893785
+  ],
+  "earth_model": "flat",
+  "z_exaggeration": 1.0,
+  "tile_overlap_px": 0,
+  "texture_alpha": true,
+  "texture_flip_y": false,
+  "theme": "light",
+  "vertical_datum": "EGM2008 (COP30)",
+  "tiles": [
+    {
+      "row": 0,
+      "col": 0,
+      "file": "stream/mttaal/L2/r0c0.glb",
+      "texture": "stream/mttaal/L2/r0c0.webp",
+      "bounds": [
+        258931.5332366681,
+        1562172.6749099833,
+        271534.9655768697,
+        1574776.107250185
+      ]
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "file": "stream/mttaal/L2/r0c1.glb",
+      "texture": "stream/mttaal/L2/r0c1.webp",
+      "bounds": [
+        271534.9655768697,
+        1562172.6749099833,
+        284138.39791707136,
+        1574776.107250185
+      ]
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "file": "stream/mttaal/L2/r0c2.glb",
+      "texture": "stream/mttaal/L2/r0c2.webp",
+      "bounds": [
+        284138.39791707136,
+        1562172.6749099833,
+        296711.4605407906,
+        1574776.107250185
+      ]
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "file": "stream/mttaal/L2/r0c3.glb",
+      "texture": "stream/mttaal/L2/r0c3.webp",
+      "bounds": [
+        296711.4605407906,
+        1562172.6749099833,
+        309314.8928809922,
+        1574776.107250185
+      ]
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "file": "stream/mttaal/L2/r1c0.glb",
+      "texture": "stream/mttaal/L2/r1c0.webp",
+      "bounds": [
+        258931.5332366681,
+        1549569.2425697816,
+        271534.9655768697,
+        1562172.6749099833
+      ]
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "file": "stream/mttaal/L2/r1c1.glb",
+      "texture": "stream/mttaal/L2/r1c1.webp",
+      "bounds": [
+        271534.9655768697,
+        1549569.2425697816,
+        284138.39791707136,
+        1562172.6749099833
+      ]
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "file": "stream/mttaal/L2/r1c2.glb",
+      "texture": "stream/mttaal/L2/r1c2.webp",
+      "bounds": [
+        284138.39791707136,
+        1549569.2425697816,
+        296711.4605407906,
+        1562172.6749099833
+      ]
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "file": "stream/mttaal/L2/r1c3.glb",
+      "texture": "stream/mttaal/L2/r1c3.webp",
+      "bounds": [
+        296711.4605407906,
+        1549569.2425697816,
+        309314.8928809922,
+        1562172.6749099833
+      ]
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "file": "stream/mttaal/L2/r2c0.glb",
+      "texture": "stream/mttaal/L2/r2c0.webp",
+      "bounds": [
+        258931.5332366681,
+        1536965.81022958,
+        271534.9655768697,
+        1549569.2425697816
+      ]
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "file": "stream/mttaal/L2/r2c1.glb",
+      "texture": "stream/mttaal/L2/r2c1.webp",
+      "bounds": [
+        271534.9655768697,
+        1536965.81022958,
+        284138.39791707136,
+        1549569.2425697816
+      ]
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "file": "stream/mttaal/L2/r2c2.glb",
+      "texture": "stream/mttaal/L2/r2c2.webp",
+      "bounds": [
+        284138.39791707136,
+        1536965.81022958,
+        296711.4605407906,
+        1549569.2425697816
+      ]
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "file": "stream/mttaal/L2/r2c3.glb",
+      "texture": "stream/mttaal/L2/r2c3.webp",
+      "bounds": [
+        296711.4605407906,
+        1536965.81022958,
+        309314.8928809922,
+        1549569.2425697816
+      ]
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "file": "stream/mttaal/L2/r3c0.glb",
+      "texture": "stream/mttaal/L2/r3c0.webp",
+      "bounds": [
+        258931.5332366681,
+        1524362.3778893785,
+        271534.9655768697,
+        1536965.81022958
+      ]
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "file": "stream/mttaal/L2/r3c1.glb",
+      "texture": "stream/mttaal/L2/r3c1.webp",
+      "bounds": [
+        271534.9655768697,
+        1524362.3778893785,
+        284138.39791707136,
+        1536965.81022958
+      ]
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "file": "stream/mttaal/L2/r3c2.glb",
+      "texture": "stream/mttaal/L2/r3c2.webp",
+      "bounds": [
+        284138.39791707136,
+        1524362.3778893785,
+        296711.4605407906,
+        1536965.81022958
+      ]
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "file": "stream/mttaal/L2/r3c3.glb",
+      "texture": "stream/mttaal/L2/r3c3.webp",
+      "bounds": [
+        296711.4605407906,
+        1524362.3778893785,
+        309314.8928809922,
+        1536965.81022958
+      ]
+    }
+  ],
+  "buildings": null,
+  "elevation_grid": "stream/mttaal/elev.json",
+  "streaming": "stream/mttaal/tileset.json",
+  "sources": {
+    "dem": "Copernicus DEM COP30 (surface model)",
+    "imagery": "Copernicus Sentinel-2"
+  },
+  "attribution": "Copernicus DEM / Copernicus Sentinel-2 imagery"
+}

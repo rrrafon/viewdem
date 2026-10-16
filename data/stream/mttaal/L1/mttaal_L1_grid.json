@@ -1,0 +1,121 @@
+{
+  "grid_size": [
+    2,
+    2
+  ],
+  "tile_overlap_px": 0,
+  "texture_alpha": true,
+  "keep_untextured": false,
+  "texture_grid": {
+    "resolution": 12.119176173913063,
+    "anchor": [
+      258931.5332366681,
+      1524362.3778893785
+    ]
+  },
+  "crs": "EPSG:32651",
+  "origin": [
+    258931.5332366681,
+    1524362.3778893785
+  ],
+  "earth_model": "flat",
+  "curvature_center": null,
+  "tiles": [
+    {
+      "row": 0,
+      "col": 0,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r0c0_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r0c0_textured.obj",
+      "bounds": [
+        258931.5332366681,
+        1549569.2425697816,
+        284138.39791707136,
+        1574776.107250185
+      ],
+      "mosaic_bounds": [
+        258931.5332366681,
+        1549558.1451549437,
+        284139.41967840726,
+        1574778.1507728568
+      ],
+      "pixel_window": [
+        0,
+        830,
+        0,
+        830
+      ]
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r0c1_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r0c1_textured.obj",
+      "bounds": [
+        284138.39791707136,
+        1549569.2425697816,
+        309314.8928809922,
+        1574776.107250185
+      ],
+      "mosaic_bounds": [
+        284127.3005022333,
+        1549558.1451549437,
+        309323.0677677986,
+        1574778.1507728568
+      ],
+      "pixel_window": [
+        0,
+        830,
+        830,
+        1659
+      ]
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r1c0_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r1c0_textured.obj",
+      "bounds": [
+        258931.5332366681,
+        1524362.3778893785,
+        284138.39791707136,
+        1549569.2425697816
+      ],
+      "mosaic_bounds": [
+        258931.5332366681,
+        1524362.3778893785,
+        284139.41967840726,
+        1549570.2643311177
+      ],
+      "pixel_window": [
+        830,
+        1660,
+        0,
+        830
+      ]
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r1c1_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mttaal/L1/mttaal_L1_r1c1_textured.obj",
+      "bounds": [
+        284138.39791707136,
+        1524362.3778893785,
+        309314.8928809922,
+        1549569.2425697816
+      ],
+      "mosaic_bounds": [
+        284127.3005022333,
+        1524362.3778893785,
+        309323.0677677986,
+        1549570.2643311177
+      ],
+      "pixel_window": [
+        830,
+        1660,
+        830,
+        1659
+      ]
+    }
+  ]
+}

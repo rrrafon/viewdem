@@ -1,0 +1,38 @@
+[
+  {
+    "label": "mtmayon",
+    "file": "manifest_mtmayon.json"
+  },
+  {
+    "label": "mtkanlaon",
+    "file": "manifest_mtkanlaon.json"
+  },
+  {
+    "label": "mtisarog",
+    "file": "manifest_mtisarog.json"
+  },
+  {
+    "label": "mtbuddajo",
+    "file": "manifest_mtbuddajo.json"
+  },
+  {
+    "label": "mtpinatubo",
+    "file": "manifest_mtpinatubo.json"
+  },
+  {
+    "label": "mttaal",
+    "file": "manifest_mttaal.json"
+  },
+  {
+    "label": "mtbanahaw",
+    "file": "manifest_mtbanahaw.json"
+  },
+  {
+    "label": "mthibokhibok",
+    "file": "manifest_mthibokhibok.json"
+  },
+  {
+    "label": "lakebuhi",
+    "file": "manifest_lakebuhi.json"
+  }
+]

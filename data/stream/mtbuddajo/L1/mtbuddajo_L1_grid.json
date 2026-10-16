@@ -1,0 +1,121 @@
+{
+  "grid_size": [
+    2,
+    2
+  ],
+  "tile_overlap_px": 0,
+  "texture_alpha": true,
+  "keep_untextured": false,
+  "texture_grid": {
+    "resolution": 10.469107041595201,
+    "anchor": [
+      264950.03891565406,
+      645113.0974689402
+    ]
+  },
+  "crs": "EPSG:32651",
+  "origin": [
+    264950.03891565406,
+    645113.0974689402
+  ],
+  "earth_model": "flat",
+  "curvature_center": null,
+  "tiles": [
+    {
+      "row": 0,
+      "col": 0,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r0c0_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r0c0_textured.obj",
+      "bounds": [
+        264950.03891565406,
+        665186.9960205794,
+        284993.19642816356,
+        685230.1535330889
+      ],
+      "mosaic_bounds": [
+        264950.03891565406,
+        665182.3756676782,
+        284998.37890030886,
+        685230.715652333
+      ],
+      "pixel_window": [
+        0,
+        652,
+        0,
+        652
+      ]
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r0c1_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r0c1_textured.obj",
+      "bounds": [
+        284993.19642816356,
+        665186.9960205794,
+        305067.0949798027,
+        685230.1535330889
+      ],
+      "mosaic_bounds": [
+        284987.90979326726,
+        665182.3756676782,
+        305067.65709904686,
+        685230.715652333
+      ],
+      "pixel_window": [
+        0,
+        652,
+        652,
+        1305
+      ]
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r1c0_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r1c0_textured.obj",
+      "bounds": [
+        264950.03891565406,
+        645113.0974689402,
+        284993.19642816356,
+        665186.9960205794
+      ],
+      "mosaic_bounds": [
+        264950.03891565406,
+        645113.0974689402,
+        284998.37890030886,
+        665192.8447747198
+      ],
+      "pixel_window": [
+        652,
+        1305,
+        0,
+        652
+      ]
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "mesh_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r1c1_textured.obj",
+      "textured_path": "/home/poseidon/Documents/stream_work_lite/mtbuddajo/L1/mtbuddajo_L1_r1c1_textured.obj",
+      "bounds": [
+        284993.19642816356,
+        645113.0974689402,
+        305067.0949798027,
+        665186.9960205794
+      ],
+      "mosaic_bounds": [
+        284987.90979326726,
+        645113.0974689402,
+        305067.65709904686,
+        665192.8447747198
+      ],
+      "pixel_window": [
+        652,
+        1305,
+        652,
+        1305
+      ]
+    }
+  ]
+}

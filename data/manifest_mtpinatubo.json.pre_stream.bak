@@ -1,0 +1,217 @@
+{
+  "name": "mtpinatubo",
+  "crs": "EPSG:32651",
+  "origin": [
+    189786.4412389873,
+    1650554.3488179045
+  ],
+  "earth_model": "flat",
+  "z_exaggeration": 1.0,
+  "tile_overlap_px": 0,
+  "texture_alpha": true,
+  "texture_flip_y": false,
+  "theme": "light",
+  "vertical_datum": "EGM2008 (COP30)",
+  "tiles": [
+    {
+      "row": 0,
+      "col": 0,
+      "file": "stream/mtpinatubo/L2/r0c0.glb",
+      "texture": "stream/mtpinatubo/L2/r0c0.webp",
+      "bounds": [
+        189786.4412389873,
+        1688495.4387026057,
+        202453.67412381558,
+        1701162.671587434
+      ]
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "file": "stream/mtpinatubo/L2/r0c1.glb",
+      "texture": "stream/mtpinatubo/L2/r0c1.webp",
+      "bounds": [
+        202453.67412381558,
+        1688495.4387026057,
+        215090.60262375197,
+        1701162.671587434
+      ]
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "file": "stream/mtpinatubo/L2/r0c2.glb",
+      "texture": "stream/mtpinatubo/L2/r0c2.webp",
+      "bounds": [
+        215090.60262375197,
+        1688495.4387026057,
+        227727.53112368833,
+        1701162.671587434
+      ]
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "file": "stream/mtpinatubo/L2/r0c3.glb",
+      "texture": "stream/mtpinatubo/L2/r0c3.webp",
+      "bounds": [
+        227727.53112368833,
+        1688495.4387026057,
+        240394.76400851662,
+        1701162.671587434
+      ]
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "file": "stream/mtpinatubo/L2/r1c0.glb",
+      "texture": "stream/mtpinatubo/L2/r1c0.webp",
+      "bounds": [
+        189786.4412389873,
+        1675858.5102026693,
+        202453.67412381558,
+        1688495.4387026057
+      ]
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "file": "stream/mtpinatubo/L2/r1c1.glb",
+      "texture": "stream/mtpinatubo/L2/r1c1.webp",
+      "bounds": [
+        202453.67412381558,
+        1675858.5102026693,
+        215090.60262375197,
+        1688495.4387026057
+      ]
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "file": "stream/mtpinatubo/L2/r1c2.glb",
+      "texture": "stream/mtpinatubo/L2/r1c2.webp",
+      "bounds": [
+        215090.60262375197,
+        1675858.5102026693,
+        227727.53112368833,
+        1688495.4387026057
+      ]
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "file": "stream/mtpinatubo/L2/r1c3.glb",
+      "texture": "stream/mtpinatubo/L2/r1c3.webp",
+      "bounds": [
+        227727.53112368833,
+        1675858.5102026693,
+        240394.76400851662,
+        1688495.4387026057
+      ]
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "file": "stream/mtpinatubo/L2/r2c0.glb",
+      "texture": "stream/mtpinatubo/L2/r2c0.webp",
+      "bounds": [
+        189786.4412389873,
+        1663221.581702733,
+        202453.67412381558,
+        1675858.5102026693
+      ]
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "file": "stream/mtpinatubo/L2/r2c1.glb",
+      "texture": "stream/mtpinatubo/L2/r2c1.webp",
+      "bounds": [
+        202453.67412381558,
+        1663221.581702733,
+        215090.60262375197,
+        1675858.5102026693
+      ]
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "file": "stream/mtpinatubo/L2/r2c2.glb",
+      "texture": "stream/mtpinatubo/L2/r2c2.webp",
+      "bounds": [
+        215090.60262375197,
+        1663221.581702733,
+        227727.53112368833,
+        1675858.5102026693
+      ]
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "file": "stream/mtpinatubo/L2/r2c3.glb",
+      "texture": "stream/mtpinatubo/L2/r2c3.webp",
+      "bounds": [
+        227727.53112368833,
+        1663221.581702733,
+        240394.76400851662,
+        1675858.5102026693
+      ]
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "file": "stream/mtpinatubo/L2/r3c0.glb",
+      "texture": "stream/mtpinatubo/L2/r3c0.webp",
+      "bounds": [
+        189786.4412389873,
+        1650554.3488179045,
+        202453.67412381558,
+        1663221.581702733
+      ]
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "file": "stream/mtpinatubo/L2/r3c1.glb",
+      "texture": "stream/mtpinatubo/L2/r3c1.webp",
+      "bounds": [
+        202453.67412381558,
+        1650554.3488179045,
+        215090.60262375197,
+        1663221.581702733
+      ]
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "file": "stream/mtpinatubo/L2/r3c2.glb",
+      "texture": "stream/mtpinatubo/L2/r3c2.webp",
+      "bounds": [
+        215090.60262375197,
+        1650554.3488179045,
+        227727.53112368833,
+        1663221.581702733
+      ]
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "file": "stream/mtpinatubo/L2/r3c3.glb",
+      "texture": "stream/mtpinatubo/L2/r3c3.webp",
+      "bounds": [
+        227727.53112368833,
+        1650554.3488179045,
+        240394.76400851662,
+        1663221.581702733
+      ]
+    }
+  ],
+  "buildings": null,
+  "elevation_grid": "stream/mtpinatubo/elev.json",
+  "streaming": "stream/mtpinatubo/tileset.json",
+  "sources": {
+    "dem": "Copernicus DEM COP30 (surface model)",
+    "imagery": "Copernicus Sentinel-2"
+  },
+  "attribution": "Copernicus DEM / Copernicus Sentinel-2 imagery"
+}

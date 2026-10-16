@@ -1,0 +1,217 @@
+{
+  "name": "mtmayon",
+  "crs": "EPSG:32651",
+  "origin": [
+    549334.5589967191,
+    1440576.7716896741
+  ],
+  "earth_model": "flat",
+  "z_exaggeration": 1.0,
+  "tile_overlap_px": 0,
+  "texture_alpha": true,
+  "texture_flip_y": false,
+  "theme": "light",
+  "vertical_datum": "EGM2008 (COP30)",
+  "tiles": [
+    {
+      "row": 0,
+      "col": 0,
+      "file": "stream/mtmayon/L2/r0c0.glb",
+      "texture": "stream/mtmayon/L2/r0c0.webp",
+      "bounds": [
+        549334.5589967191,
+        1478154.1624409263,
+        561860.3559138031,
+        1490679.9593580102
+      ]
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "file": "stream/mtmayon/L2/r0c1.glb",
+      "texture": "stream/mtmayon/L2/r0c1.webp",
+      "bounds": [
+        561860.3559138031,
+        1478154.1624409263,
+        574386.1528308871,
+        1490679.9593580102
+      ]
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "file": "stream/mtmayon/L2/r0c2.glb",
+      "texture": "stream/mtmayon/L2/r0c2.webp",
+      "bounds": [
+        574386.1528308871,
+        1478154.1624409263,
+        586911.949747971,
+        1490679.9593580102
+      ]
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "file": "stream/mtmayon/L2/r0c3.glb",
+      "texture": "stream/mtmayon/L2/r0c3.webp",
+      "bounds": [
+        586911.949747971,
+        1478154.1624409263,
+        599437.746665055,
+        1490679.9593580102
+      ]
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "file": "stream/mtmayon/L2/r1c0.glb",
+      "texture": "stream/mtmayon/L2/r1c0.webp",
+      "bounds": [
+        549334.5589967191,
+        1465628.3655238422,
+        561860.3559138031,
+        1478154.1624409263
+      ]
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "file": "stream/mtmayon/L2/r1c1.glb",
+      "texture": "stream/mtmayon/L2/r1c1.webp",
+      "bounds": [
+        561860.3559138031,
+        1465628.3655238422,
+        574386.1528308871,
+        1478154.1624409263
+      ]
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "file": "stream/mtmayon/L2/r1c2.glb",
+      "texture": "stream/mtmayon/L2/r1c2.webp",
+      "bounds": [
+        574386.1528308871,
+        1465628.3655238422,
+        586911.949747971,
+        1478154.1624409263
+      ]
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "file": "stream/mtmayon/L2/r1c3.glb",
+      "texture": "stream/mtmayon/L2/r1c3.webp",
+      "bounds": [
+        586911.949747971,
+        1465628.3655238422,
+        599437.746665055,
+        1478154.1624409263
+      ]
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "file": "stream/mtmayon/L2/r2c0.glb",
+      "texture": "stream/mtmayon/L2/r2c0.webp",
+      "bounds": [
+        549334.5589967191,
+        1453102.5686067583,
+        561860.3559138031,
+        1465628.3655238422
+      ]
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "file": "stream/mtmayon/L2/r2c1.glb",
+      "texture": "stream/mtmayon/L2/r2c1.webp",
+      "bounds": [
+        561860.3559138031,
+        1453102.5686067583,
+        574386.1528308871,
+        1465628.3655238422
+      ]
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "file": "stream/mtmayon/L2/r2c2.glb",
+      "texture": "stream/mtmayon/L2/r2c2.webp",
+      "bounds": [
+        574386.1528308871,
+        1453102.5686067583,
+        586911.949747971,
+        1465628.3655238422
+      ]
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "file": "stream/mtmayon/L2/r2c3.glb",
+      "texture": "stream/mtmayon/L2/r2c3.webp",
+      "bounds": [
+        586911.949747971,
+        1453102.5686067583,
+        599437.746665055,
+        1465628.3655238422
+      ]
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "file": "stream/mtmayon/L2/r3c0.glb",
+      "texture": "stream/mtmayon/L2/r3c0.webp",
+      "bounds": [
+        549334.5589967191,
+        1440576.7716896741,
+        561860.3559138031,
+        1453102.5686067583
+      ]
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "file": "stream/mtmayon/L2/r3c1.glb",
+      "texture": "stream/mtmayon/L2/r3c1.webp",
+      "bounds": [
+        561860.3559138031,
+        1440576.7716896741,
+        574386.1528308871,
+        1453102.5686067583
+      ]
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "file": "stream/mtmayon/L2/r3c2.glb",
+      "texture": "stream/mtmayon/L2/r3c2.webp",
+      "bounds": [
+        574386.1528308871,
+        1440576.7716896741,
+        586911.949747971,
+        1453102.5686067583
+      ]
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "file": "stream/mtmayon/L2/r3c3.glb",
+      "texture": "stream/mtmayon/L2/r3c3.webp",
+      "bounds": [
+        586911.949747971,
+        1440576.7716896741,
+        599437.746665055,
+        1453102.5686067583
+      ]
+    }
+  ],
+  "buildings": null,
+  "elevation_grid": "stream/mtmayon/elev.json",
+  "streaming": "stream/mtmayon/tileset.json",
+  "sources": {
+    "dem": "Copernicus DEM COP30 (surface model)",
+    "imagery": "Copernicus Sentinel-2"
+  },
+  "attribution": "Copernicus DEM / Copernicus Sentinel-2 imagery"
+}

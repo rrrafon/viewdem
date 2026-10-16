@@ -1,0 +1,217 @@
+{
+  "name": "mtbanahaw",
+  "crs": "EPSG:32651",
+  "origin": [
+    311943.05914147035,
+    1530660.8278299635
+  ],
+  "earth_model": "flat",
+  "z_exaggeration": 1.0,
+  "tile_overlap_px": 0,
+  "texture_alpha": true,
+  "texture_flip_y": false,
+  "theme": "light",
+  "vertical_datum": "EGM2008 (COP30)",
+  "tiles": [
+    {
+      "row": 0,
+      "col": 0,
+      "file": "stream/mtbanahaw/L2/r0c0.glb",
+      "texture": "stream/mtbanahaw/L2/r0c0.webp",
+      "bounds": [
+        311943.05914147035,
+        1568395.9335112607,
+        324511.30833862,
+        1580964.1827084105
+      ]
+    },
+    {
+      "row": 0,
+      "col": 1,
+      "file": "stream/mtbanahaw/L2/r0c1.glb",
+      "texture": "stream/mtbanahaw/L2/r0c1.webp",
+      "bounds": [
+        324511.30833862,
+        1568395.9335112607,
+        337079.55753576965,
+        1580964.1827084105
+      ]
+    },
+    {
+      "row": 0,
+      "col": 2,
+      "file": "stream/mtbanahaw/L2/r0c2.glb",
+      "texture": "stream/mtbanahaw/L2/r0c2.webp",
+      "bounds": [
+        337079.55753576965,
+        1568395.9335112607,
+        349678.16482276755,
+        1580964.1827084105
+      ]
+    },
+    {
+      "row": 0,
+      "col": 3,
+      "file": "stream/mtbanahaw/L2/r0c3.glb",
+      "texture": "stream/mtbanahaw/L2/r0c3.webp",
+      "bounds": [
+        349678.16482276755,
+        1568395.9335112607,
+        362246.4140199172,
+        1580964.1827084105
+      ]
+    },
+    {
+      "row": 1,
+      "col": 0,
+      "file": "stream/mtbanahaw/L2/r1c0.glb",
+      "texture": "stream/mtbanahaw/L2/r1c0.webp",
+      "bounds": [
+        311943.05914147035,
+        1555827.684314111,
+        324511.30833862,
+        1568395.9335112607
+      ]
+    },
+    {
+      "row": 1,
+      "col": 1,
+      "file": "stream/mtbanahaw/L2/r1c1.glb",
+      "texture": "stream/mtbanahaw/L2/r1c1.webp",
+      "bounds": [
+        324511.30833862,
+        1555827.684314111,
+        337079.55753576965,
+        1568395.9335112607
+      ]
+    },
+    {
+      "row": 1,
+      "col": 2,
+      "file": "stream/mtbanahaw/L2/r1c2.glb",
+      "texture": "stream/mtbanahaw/L2/r1c2.webp",
+      "bounds": [
+        337079.55753576965,
+        1555827.684314111,
+        349678.16482276755,
+        1568395.9335112607
+      ]
+    },
+    {
+      "row": 1,
+      "col": 3,
+      "file": "stream/mtbanahaw/L2/r1c3.glb",
+      "texture": "stream/mtbanahaw/L2/r1c3.webp",
+      "bounds": [
+        349678.16482276755,
+        1555827.684314111,
+        362246.4140199172,
+        1568395.9335112607
+      ]
+    },
+    {
+      "row": 2,
+      "col": 0,
+      "file": "stream/mtbanahaw/L2/r2c0.glb",
+      "texture": "stream/mtbanahaw/L2/r2c0.webp",
+      "bounds": [
+        311943.05914147035,
+        1543229.0770271132,
+        324511.30833862,
+        1555827.684314111
+      ]
+    },
+    {
+      "row": 2,
+      "col": 1,
+      "file": "stream/mtbanahaw/L2/r2c1.glb",
+      "texture": "stream/mtbanahaw/L2/r2c1.webp",
+      "bounds": [
+        324511.30833862,
+        1543229.0770271132,
+        337079.55753576965,
+        1555827.684314111
+      ]
+    },
+    {
+      "row": 2,
+      "col": 2,
+      "file": "stream/mtbanahaw/L2/r2c2.glb",
+      "texture": "stream/mtbanahaw/L2/r2c2.webp",
+      "bounds": [
+        337079.55753576965,
+        1543229.0770271132,
+        349678.16482276755,
+        1555827.684314111
+      ]
+    },
+    {
+      "row": 2,
+      "col": 3,
+      "file": "stream/mtbanahaw/L2/r2c3.glb",
+      "texture": "stream/mtbanahaw/L2/r2c3.webp",
+      "bounds": [
+        349678.16482276755,
+        1543229.0770271132,
+        362246.4140199172,
+        1555827.684314111
+      ]
+    },
+    {
+      "row": 3,
+      "col": 0,
+      "file": "stream/mtbanahaw/L2/r3c0.glb",
+      "texture": "stream/mtbanahaw/L2/r3c0.webp",
+      "bounds": [
+        311943.05914147035,
+        1530660.8278299635,
+        324511.30833862,
+        1543229.0770271132
+      ]
+    },
+    {
+      "row": 3,
+      "col": 1,
+      "file": "stream/mtbanahaw/L2/r3c1.glb",
+      "texture": "stream/mtbanahaw/L2/r3c1.webp",
+      "bounds": [
+        324511.30833862,
+        1530660.8278299635,
+        337079.55753576965,
+        1543229.0770271132
+      ]
+    },
+    {
+      "row": 3,
+      "col": 2,
+      "file": "stream/mtbanahaw/L2/r3c2.glb",
+      "texture": "stream/mtbanahaw/L2/r3c2.webp",
+      "bounds": [
+        337079.55753576965,
+        1530660.8278299635,
+        349678.16482276755,
+        1543229.0770271132
+      ]
+    },
+    {
+      "row": 3,
+      "col": 3,
+      "file": "stream/mtbanahaw/L2/r3c3.glb",
+      "texture": "stream/mtbanahaw/L2/r3c3.webp",
+      "bounds": [
+        349678.16482276755,
+        1530660.8278299635,
+        362246.4140199172,
+        1543229.0770271132
+      ]
+    }
+  ],
+  "buildings": null,
+  "elevation_grid": "stream/mtbanahaw/elev.json",
+  "streaming": "stream/mtbanahaw/tileset.json",
+  "sources": {
+    "dem": "Copernicus DEM COP30 (surface model)",
+    "imagery": "Copernicus Sentinel-2"
+  },
+  "attribution": "Copernicus DEM / Copernicus Sentinel-2 imagery"
+}
