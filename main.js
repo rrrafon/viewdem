@@ -254,7 +254,9 @@ async function main() {
   const homeTarget = controls.target.clone();
   const homeFov = camera.fov;
 
-  el('dsTitle').textContent = manifest.name;
+  const pretty = (s) => s.replace(/^mt/i, 'Mount ').replace(/^lake/i, 'Lake ')
+      .replace(/([a-z])([A-Z])/g, '$1 $2')
+      .replace(/\b([a-z])/g, (c) => c.toUpperCase());
   infoEl.innerHTML =
     `${manifest.tiles.length} tiles · extent ${Math.round(size.x)} × ${Math.round(size.y)} m<br>` +
     `elevation ${zRange[0].toFixed(1)} … ${zRange[1].toFixed(1)} m<br>` +
@@ -487,11 +489,15 @@ async function main() {
   datasetList.forEach((d) => {
     const o = document.createElement('option');
     o.value = d.file;
-    o.textContent = d.label;
+    o.textContent = pretty(d.label);
     if (d.file === currentM) o.selected = true;
     dsSel.appendChild(o);
   });
   dsSel.onchange = () => { location.search = '?m=' + dsSel.value; };
+  // dsSel.querySelectorAll('option').forEach((o) => {
+  //   o.textContent = o.textContent.replace(/^mt/i, 'Mount ').replace(/^lake/i, 'Lake ')
+  //     .replace(/([a-z])([A-Z])/g, '$1 $2');
+  // });
 
   // Collapsible panel; start collapsed on small screens.
   const panel = el('panel');

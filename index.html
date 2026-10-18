@@ -3,8 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DEM Viewer</title>
+<title>DEM Viewer — 3D Terrain of Philippine Volcanoes &amp; Lakes</title>
+<meta name="description" content="Interactive 3D terrain viewer for nine Philippine volcanoes and lakes — Mount Mayon, Kanlaon, Isarog, Bud Dajo, Pinatubo, Taal, Banahaw, Hibok-Hibok and Lake Buhi. Fly over Copernicus DEM terrain with Sentinel-2 imagery and OSM buildings, read elevations, and switch datasets.">
+<meta name="keywords" content="Philippines, volcano, 3D terrain, DEM, digital elevation model, Mount Mayon, Mount Kanlaon, Mount Isarog, Mount Pinatubo, Mount Taal, Mount Banahaw, Mount Hibok-Hibok, Lake Buhi, geospatial, web viewer, Three.js">
+<meta name="author" content="rrrafon">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0e13">
+<link rel="canonical" href="https://rrrafon.github.io/demviewer/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DEM Viewer — 3D Terrain of Philippine Volcanoes &amp; Lakes">
+<meta property="og:description" content="Fly over nine Philippine volcanoes and lakes in interactive 3D: Copernicus DEM terrain, Sentinel-2 imagery, OSM buildings, click-to-read elevations.">
+<meta property="og:url" content="https://rrrafon.github.io/demviewer/">
+<meta property="og:site_name" content="DEM Viewer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DEM Viewer — 3D Terrain of Philippine Volcanoes &amp; Lakes">
+<meta name="twitter:description" content="Interactive 3D terrain of nine Philippine volcanoes and lakes — Mayon, Kanlaon, Isarog, Bud Dajo, Pinatubo, Taal, Banahaw, Hibok-Hibok, Lake Buhi.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "DEM Viewer — Philippine Volcanoes & Lakes",
+  "url": "https://rrrafon.github.io/demviewer/",
+  "description": "Interactive 3D terrain viewer for nine Philippine volcanoes and lakes built from Copernicus DEM GLO-30 elevation data, Sentinel-2 imagery, and OpenStreetMap buildings.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (modern browser)",
+  "inLanguage": "en",
+  "keywords": "Philippines, volcano, 3D terrain, DEM, Mount Mayon, Mount Kanlaon, Mount Isarog, Mount Pinatubo, Mount Taal, Mount Banahaw, Mount Hibok-Hibok, Lake Buhi, geospatial",
+  "author": { "@type": "Person", "name": "rrrafon" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
 <style>
+    #homeLink {
+      position: fixed; top: 10px; left: 10px; z-index: 1000;
+      background: var(--panel-bg); color: var(--panel-fg);
+      border: 1px solid var(--btn-border); border-radius: 8px;
+      padding: 6px 12px; font-size: 14px; text-decoration: none;
+    }
+    #homeLink:hover { border-color: var(--accent); }
   :root {
     --panel-bg: rgba(255,255,255,0.94); --panel-fg: #111;
     --accent: #1a6fd4; --accent-fg: #fff;
@@ -117,7 +153,7 @@
     max-height: calc(100vh - 16px); display: flex; flex-direction: column;
   }
   #panel header {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; justify-content: flex-end; align-items: center;
     padding: 8px 10px; font-weight: bold; cursor: pointer; user-select: none;
   }
   #panel header button {
@@ -194,9 +230,10 @@
 </script>
 </head>
 <body>
+<a id="homeLink" href="./landing.html" aria-label="Back to all datasets">&#8962; All datasets</a>
 <div id="app"></div>
 <div id="panel">
-  <header id="panelHead"><span id="dsTitle">DEM Viewer</span><button id="collapseBtn" aria-label="collapse panel">–</button></header>
+  <header id="panelHead"><button id="collapseBtn" aria-label="collapse panel">–</button></header>
   <div id="panelBody">
     <section><div class="stitle">Dataset</div><select id="dsSel" style="width:100%;min-height:42px;font-size:13px;border:1px solid var(--btn-border);border-radius:4px;background:var(--btn-bg);color:var(--btn-fg);padding:6px;"></select></section>
     <section><div class="stitle">Display</div><div class="seg" id="modeSeg">
@@ -243,6 +280,14 @@
 <div id="loading"><div id="loadLabel">loading…</div><div class="bar"><div id="loadBar"></div></div></div>
 <div id="errbox"><div id="errMsg"></div><button onclick="location.reload()">Retry</button></div>
 <div id="attr">Copernicus DEM (EGM2008, surface model) · Contains modified Copernicus Sentinel data (2026) · © OpenStreetMap contributors (ODbL)</div>
-<script type="module" src="./main.js?v=38"></script>
+<script>
+    // Landing page is the entry point: bounce to it unless a dataset (?m=)
+    // was requested. location.replace keeps history clean; the manifest
+    // guard below still lets direct ?m= links land straight in the viewer.
+    if (!new URLSearchParams(location.search).get('m')) {
+      location.replace('./landing.html');
+    }
+  </script>
+  <script type="module" src="./main.js?v=38"></script>
 </body>
 </html>
