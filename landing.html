@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self' data:; connect-src 'self' blob: data: https://*.google-analytics.com https://*.googletagmanager.com; worker-src 'self' blob:; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'">
   <title>DEM Viewer — Philippine Volcanoes &amp; Lakes</title>
   <meta name="description" content="Interactive 3D terrain viewer for nine Philippine volcanoes and lakes — Mount Mayon, Kanlaon, Isarog, Bud Dajo, Pinatubo, Taal, Banahaw, Hibok-Hibok and Lake Buhi. Fly over Copernicus DEM terrain with Sentinel-2 imagery and OSM buildings, read elevations, and switch datasets.">
   <meta name="keywords" content="Philippines, volcano, 3D terrain, DEM, digital elevation model, Mount Mayon, Mount Kanlaon, Mount Isarog, Mount Pinatubo, Mount Taal, Mount Banahaw, Mount Hibok-Hibok, Lake Buhi, geospatial, web viewer, Three.js">
@@ -103,7 +104,7 @@
   </header>
   <main id="grid" aria-label="Datasets"></main>
   <script type="module">
-    import { loadSiteInfo, openSiteInfo } from './siteinfo.js?v=1';
+    import { loadSiteInfo, openSiteInfo } from './siteinfo.js?v=2';
 
     // Dataset names are not hard-coded here: the landing page is shared by
     // every site this project scaffolds, so it reads whatever the site
@@ -136,8 +137,18 @@
       // datasets yet. Only when it is missing do we fall back to the ids
       // the notes mention.
       const registry = reg.ok && Array.isArray(reg.data) ? reg.data : null;
+      // Registry/notes values become URLs: keep only plain filenames so a
+      // crafted datasets.json cannot point at paths outside the site.
+      const safeName = (v) => {
+        const s = String(v == null ? '' : v).trim();
+        return /^[A-Za-z0-9][A-Za-z0-9._-]*$/.test(s) ? s : null;
+      };
       const datasets = (registry || Object.keys(notes).map((id) => ({ label: id })))
-        .map((d) => ({ id: d.label, file: d.file || `manifest_${d.label}.json` }));
+        .map((d) => ({
+          id: safeName(d.label),
+          file: safeName(d.file || `manifest_${d.label}.json`),
+        }))
+        .filter((d) => d.id && d.file);
 
       if (!datasets.length) {
         const p = document.createElement('p');
@@ -156,10 +167,10 @@
         card.className = 'card';
         const a = document.createElement('a');
         a.className = 'card-link';
-        a.href = './?m=' + file;
+        a.href = './?m=' + encodeURIComponent(file);
         a.setAttribute('aria-label', title + ' — open 3D terrain');
         const img = document.createElement('img');
-        img.src = './thumbnails/' + id + '.png';
+        img.src = './thumbnails/' + encodeURIComponent(id) + '.png';
         img.alt = title + ' terrain preview';
         img.loading = 'lazy';
         // No thumbnail for this dataset — show a neutral placeholder

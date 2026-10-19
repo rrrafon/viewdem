@@ -1,6 +1,17 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/GLTFLoader.js';
 
+// Tileset-referenced paths are relative to the tileset directory. Reject
+// values that could escape it (absolute, scheme'd, backslash, or '..').
+const safeRelPath = (p) => {
+  if (typeof p !== 'string') return null;
+  const s = p.trim();
+  if (!s || s.startsWith('/') || s.includes('\\') || s.includes('%')) return null;
+  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(s)) return null;
+  if (s.split('/').some((seg) => seg === '..')) return null;
+  return s;
+};
+
 // stream.js -- multi-resolution streaming loader (plan_streaming.md §8.3).
 //
 // Owns data/policy/queue/visibility for tileset pyramids. All three.js
@@ -27,10 +38,12 @@ export async function startStreaming(env) {
   const gltfLoader = new GLTFLoader();
   const texLoader = new THREE.TextureLoader();
 
-  const res = await fetch(basePath + manifest.streaming);
-  if (!res.ok) throw new Error(`tileset ${manifest.streaming}: HTTP ${res.status}`);
+  const streamingRel = safeRelPath(manifest.streaming);
+  if (!streamingRel) throw new Error(`unsafe streaming path: ${manifest.streaming}`);
+  const res = await fetch(basePath + streamingRel);
+  if (!res.ok) throw new Error(`tileset ${streamingRel}: HTTP ${res.status}`);
   const tileset = await res.json();
-  const dir = basePath + manifest.streaming.split('/').slice(0, -1).join('/');
+  const dir = basePath + streamingRel.split('/').slice(0, -1).join('/');
 
   // Tileset meshes are origin-relative to tileset.origin, which can differ
   // slightly from manifest.origin (separate meshing runs). Shift content so
@@ -269,9 +282,17 @@ export async function startStreaming(env) {
       if (activeLoads >= MAX_CONCURRENT) break;
       if (rec.status !== 'idle') continue;
       const info = isL0 ? l0info : null;
-      const url = isL0 ? dir + '/' + info.mesh : dir + '/' + rec.file;
-      const tex = isL0 ? (info.texture ? dir + '/' + info.texture : null)
-        : (rec.texture ? dir + '/' + rec.texture : null);
+      const rawFile = isL0 ? (info && info.mesh) : rec.file;
+      const rawTex = isL0 ? (info && info.texture) : rec.texture;
+      const relUrl = safeRelPath(rawFile);
+      const relTex = safeRelPath(rawTex);
+      if (!relUrl || (rawTex && !relTex)) {
+        rec.status = 'error';
+        rec.fails = (rec.fails || 0) + 1;
+        continue;
+      }
+      const url = dir + '/' + relUrl;
+      const tex = relTex ? dir + '/' + relTex : null;
       loadRec(rec, url, tex, isL0);
     }
     // Abort in-flight loads that are no longer wanted.
@@ -316,8 +337,8 @@ export async function startStreaming(env) {
 
   // ---- buildings (v1: single file, shown once refined detail is on screen)
   let buildingsState = 'idle';
-  const bUrl = tileset.buildings && tileset.buildings.file
-    ? basePath + tileset.buildings.file : null;
+  const buildingsRel = tileset.buildings && safeRelPath(tileset.buildings.file);
+  const bUrl = buildingsRel ? basePath + buildingsRel : null;
   const pumpBuildings = async () => {
     const atRefined = target >= (tileset.buildings?.level ?? maxDetail);
     const showAll = document.getElementById('chkBldAll')?.checked === true;

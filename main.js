@@ -15,6 +15,26 @@ const loadBar = el('loadBar');
 const escapeHtml = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// Manifest/dataset paths are resolved under ./data/. Reject values that
+// could escape that directory (absolute, scheme'd, backslash, or '..').
+const safeRelPath = (p) => {
+  if (typeof p !== 'string') return null;
+  const s = p.trim();
+  if (!s || s.startsWith('/') || s.includes('\\') || s.includes('%')) return null;
+  if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(s)) return null;
+  if (s.split('/').some((seg) => seg === '..')) return null;
+  return s;
+};
+const dataPath = (p) => {
+  const rel = safeRelPath(p);
+  return rel == null ? null : './data/' + rel;
+};
+const fetchDataJson = async (p) => {
+  const url = dataPath(p);
+  if (!url) throw new Error(`unsafe data path: ${p}`);
+  return (await fetch(url)).json();
+};
+
 // Fallback display name for a dataset id ("mtmayon" -> "Mount Mayon").
 // data/site_info.json carries the authoritative name when a site has
 // notes, so this only has to be good enough for undocumented datasets.
@@ -43,15 +63,21 @@ async function main() {
   // Default manifest: explicit ?m= wins; else manifest.json; else the
   // first dataset registered by export_web (fresh single-dataset sites
   // often only have e.g. mtApo.json).
-  let manifestFile = params.get('m') || 'manifest.json';
-  const manifestPath = './data/' + manifestFile;
-  let res = await fetch(manifestPath);
+  let manifestFile = safeRelPath(params.get('m') || 'manifest.json');
+  if (!manifestFile) {
+    showError('Invalid dataset path in ?m=.');
+    return;
+  }
+  let res = await fetch('./data/' + manifestFile);
   if (!res.ok && !params.get('m')) {
     try {
       const reg = await (await fetch('./data/datasets.json')).json();
-      if (Array.isArray(reg) && reg.length && reg[0].file) {
-        manifestFile = reg[0].file;
-        res = await fetch('./data/' + manifestFile);
+      if (Array.isArray(reg) && reg.length) {
+        const first = safeRelPath(reg[0].file);
+        if (first) {
+          manifestFile = first;
+          res = await fetch('./data/' + manifestFile);
+        }
       }
     } catch { /* fall through to the error below */ }
   }
@@ -241,7 +267,7 @@ async function main() {
   let zRange = [-100, 2000];
   if (manifest.elevation_grid) {
     try {
-      const eg = await (await fetch('./data/' + manifest.elevation_grid)).json();
+      const eg = await fetchDataJson(manifest.elevation_grid);
       const n = eg.n;
       const raw = Uint8Array.from(atob(eg.data), (c) => c.charCodeAt(0));
       elevGrid = { n, bounds: eg.bounds, z: new Float32Array(raw.buffer) };
@@ -298,7 +324,7 @@ async function main() {
   // lazy loader below runs untouched (old datasets have no `streaming`).
   let streamHandle = null;
   if (manifest.streaming) {
-    const { startStreaming } = await import('./stream.js');
+    const { startStreaming } = await import('./stream.js?v=41');
     const buildTileContent = (obj, tex) => {
       if (tex) {
         tex.colorSpace = THREE.SRGBColorSpace;
@@ -384,10 +410,15 @@ async function main() {
     st.status = 'loading';
     activeLoads++;
     try {
+      const filePath = dataPath(st.t.file);
+      const texPath = st.t.texture ? dataPath(st.t.texture) : null;
+      if (!filePath || (st.t.texture && !texPath)) {
+        throw new Error(`unsafe tile path: ${st.t.file}`);
+      }
       const [obj, tex] = await Promise.all([
-        loadModel('./data/' + st.t.file).then((o) => { tick(`terrain ${st.t.file}`); return o; }),
-        st.t.texture
-          ? texLoader.loadAsync('./data/' + st.t.texture).then((x) => { tick(`texture`); return x; })
+        loadModel(filePath).then((o) => { tick(`terrain ${st.t.file}`); return o; }),
+        texPath
+          ? texLoader.loadAsync(texPath).then((x) => { tick(`texture`); return x; })
           : Promise.resolve(null),
       ]);
       if (tex) {
@@ -471,7 +502,9 @@ async function main() {
   const loadBuildings = async () => {
     if (!manifest.buildings) return;
     try {
-      const bObj = await loadModel('./data/' + manifest.buildings);
+      const bPath = dataPath(manifest.buildings);
+      if (!bPath) throw new Error('unsafe buildings path');
+      const bObj = await loadModel(bPath);
       tick('buildings');
       bObj.traverse((child) => {
         if (child.isMesh) {
@@ -514,17 +547,25 @@ async function main() {
   let datasetList = [{ label: manifest.name, file: currentM }];
   try {
     const reg = await (await fetch('./data/datasets.json')).json();
-    if (Array.isArray(reg) && reg.length) datasetList = reg;
+    if (Array.isArray(reg) && reg.length) {
+      const clean = reg.filter((d) => d && typeof d === 'object'
+        && safeRelPath(d.file) !== null);
+      if (clean.length) datasetList = clean;
+    }
   } catch { /* single dataset */ }
   const dsSel = el('dsSel');
   datasetList.forEach((d) => {
+    const file = safeRelPath(d.file);
+    if (!file) return;
     const o = document.createElement('option');
-    o.value = d.file;
+    o.value = file;
     o.textContent = nameOf(d.label);
-    if (d.file === currentM) o.selected = true;
+    if (file === currentM) o.selected = true;
     dsSel.appendChild(o);
   });
-  dsSel.onchange = () => { location.search = '?m=' + dsSel.value; };
+  dsSel.onchange = () => {
+    location.search = '?m=' + encodeURIComponent(dsSel.value);
+  };
 
   // Collapsible panel; start collapsed on small screens.
   const panel = el('panel');
@@ -789,7 +830,7 @@ async function main() {
   // Elev grid already fetched pre-framing for the lazy loader; reuse it.
   if (!elevGrid && manifest.elevation_grid) {
     try {
-      const eg = await (await fetch('./data/' + manifest.elevation_grid)).json();
+      const eg = await fetchDataJson(manifest.elevation_grid);
       const n = eg.n;
       const raw = Uint8Array.from(atob(eg.data), (c) => c.charCodeAt(0));
       elevGrid = { n, bounds: eg.bounds, z: new Float32Array(raw.buffer) };
