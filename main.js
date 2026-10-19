@@ -2,13 +2,18 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/OrbitControls.js';
 import { OBJLoader } from 'three/addons/OBJLoader.js';
 import { GLTFLoader } from 'three/addons/GLTFLoader.js';
-import { loadSiteInfo, openSiteInfo } from './siteinfo.js?v=1';
+import { loadSiteInfo, openSiteInfo } from './siteinfo.js?v=2';
 
 const el = (id) => document.getElementById(id);
 const infoEl = el('info');
 const loadEl = el('loading');
 const loadLabel = el('loadLabel');
 const loadBar = el('loadBar');
+
+// Escape for the one spot that builds info-panel HTML from manifest strings
+// (crs, attribution); every other dynamic string uses textContent.
+const escapeHtml = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => (
+  { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 // Fallback display name for a dataset id ("mtmayon" -> "Mount Mayon").
 // data/site_info.json carries the authoritative name when a site has
@@ -286,8 +291,8 @@ async function main() {
   infoEl.innerHTML =
     `${manifest.tiles.length} tiles · extent ${Math.round(size.x)} × ${Math.round(size.y)} m<br>` +
     `elevation ${zRange[0].toFixed(1)} … ${zRange[1].toFixed(1)} m<br>` +
-    `CRS ${manifest.crs} · flat · exaggeration 1.0 <span style="color:#888">(v38${manifest.streaming ? '-stream' : '-lazy'})</span><br>` +
-    `${manifest.attribution}`;
+    `CRS ${escapeHtml(manifest.crs)} · flat · exaggeration 1.0 <span style="color:#888">(v38${manifest.streaming ? '-stream' : '-lazy'})</span><br>` +
+    `${escapeHtml(manifest.attribution)}`;
 
   // Streaming path (§8.3): tileset pyramid via stream.js. Otherwise the
   // lazy loader below runs untouched (old datasets have no `streaming`).

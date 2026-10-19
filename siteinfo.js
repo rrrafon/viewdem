@@ -35,6 +35,19 @@ export async function loadSiteInfo() {
 const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
 const escapeHtml = (s) => String(s).replace(/[&<>"]/g, (c) => ESCAPES[c]);
 
+// Reference hrefs come from site_info.json. Allow only http(s) and
+// relative/anchor targets so a javascript: or data: URL can never turn a
+// "source" link into a clickable XSS.
+function safeHref(url) {
+  const s = String(url == null ? '' : url).trim();
+  if (!s) return '#';
+  try {
+    const u = new URL(s, location.href);
+    if (u.protocol !== 'http:' && u.protocol !== 'https:') return '#';
+  } catch { return '#'; }
+  return escapeHtml(s);
+}
+
 // Minimal markdown subset used by site_info.json: **bold**, *italic* and
 // [^n] footnote markers. Escaping happens first, so authored text can
 // never inject markup.
@@ -67,7 +80,7 @@ function renderEntry(entry) {
       <li id="fn-${escapeHtml(r.n)}">
         <a class="si-backref" href="#fnref-${escapeHtml(r.n)}">${escapeHtml(r.n)}</a>
         <span>${escapeHtml(r.label || '')}</span>
-        <a class="si-reflink" href="${escapeHtml(r.url || '#')}" target="_blank"
+        <a class="si-reflink" href="${safeHref(r.url)}" target="_blank"
            rel="noopener noreferrer">source</a>
       </li>`).join('');
     parts.push(`<h3 class="si-h3">References</h3><ol class="si-refs">${items}</ol>`);
