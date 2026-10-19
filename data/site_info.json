@@ -1,0 +1,618 @@
+{
+  "mtmayon": {
+    "name": "Mount Mayon",
+    "region": "Albay, Bicol",
+    "kind": "Volcano",
+    "arc": "Bicol Volcanic Arc",
+    "elevation_m": 2421,
+    "short": "Perfect-cone stratovolcano, Albay",
+    "summary": "Active stratovolcano on the **Bicol Volcanic Arc**, and the most active volcano in the Philippines with 52+ eruptions in 500 years.[^1] It is among the most symmetrical volcanic cones on Earth — the \"perfect cone\" that rises 2,421 m from Albay Gulf.[^2] The VEI 4 eruption of 1814 buried the town of Cagsawa and killed roughly 1,200 people; only the church bell tower survived.[^1] It was the Philippines' first national park (1938), and its caldera is the core of the UNESCO Albay Biosphere Reserve.[^2] In pre-colonial Bicolano tradition it is the abode of **Daragang Magayon** and the supreme god Gugurang.[^1] Activity continues: PHIVOLCS raised the alert level to 3 after a magmatic eruption on 6 January 2026.[^3]",
+    "facts": [
+      {
+        "label": "Volcanic arc",
+        "value": "Bicol Volcanic Arc"
+      },
+      {
+        "label": "Type",
+        "value": "Active stratovolcano"
+      },
+      {
+        "label": "Summit elevation",
+        "value": "2,421 m"
+      },
+      {
+        "label": "Eruption record",
+        "value": "52+ eruptions in 500 years — the most active volcano in the Philippines"
+      },
+      {
+        "label": "Largest historical eruption",
+        "value": "VEI 4, 1814 — buried Cagsawa, ~1,200 killed"
+      },
+      {
+        "label": "Protected area",
+        "value": "Philippines' first national park (1938); its caldera is the core of the UNESCO Albay Biosphere Reserve"
+      },
+      {
+        "label": "Cultural significance",
+        "value": "Abode of Daragang Magayon and the supreme god Gugurang in pre-colonial Bicolano tradition"
+      },
+      {
+        "label": "Current status",
+        "value": "PHIVOLCS alert level 3 after a magmatic eruption on 6 January 2026"
+      }
+    ],
+    "refs": [
+      {
+        "n": 1,
+        "label": "\"Mayon\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Mayon"
+      },
+      {
+        "n": 2,
+        "label": "Mayon Volcano, PHIVOLCS",
+        "url": "https://volcano.si.edu/volcano.cfm?vn=273030"
+      },
+      {
+        "n": 3,
+        "label": "\"PHIVOLCS: Kanlaon Volcano experienced 'explosive eruption'\", GMA News, 10 Jan 2026",
+        "url": "https://www.gmanetwork.com/news/sciencetech/weather/solano/939331/phivolcs-kanlaon-volcano-experienced-explosive-eruption/story/"
+      }
+    ]
+  },
+  "mtkanlaon": {
+    "name": "Mount Kanlaon",
+    "region": "Negros Occidental / Negros Oriental, Visayas",
+    "kind": "Volcano",
+    "arc": "Negros Volcanic Belt",
+    "elevation_m": 2465,
+    "short": "Highest point in the Visayas",
+    "summary": "Active andesitic stratovolcano on the **Negros Volcanic Belt**, and the highest peak in the Visayas at 2,465 m — also the highest mountain on Negros Island and the 42nd-highest island peak on Earth.[^4] It has erupted more than 40 times since 1819 and is the most active volcano in the Visayas; eruptions are usually phreatic, throwing ash and steam from the summit Lugud crater.[^5] The name means \"place of Laon\", after the pre-colonial Visayan goddess of creation and agriculture.[^6] Its southwestern flank carries the **La Castellana debris avalanche** — at 13 km³ over a 33 km run-out, the largest known debris flow in the Philippines.[^5] A 2024–2026 unrest sequence has produced a VEI 3 eruption, 87,000 evacuated, and further moderately explosive eruptions through 2026.[^7]",
+    "facts": [
+      {
+        "label": "Volcanic belt",
+        "value": "Negros Volcanic Belt"
+      },
+      {
+        "label": "Type",
+        "value": "Active andesitic stratovolcano"
+      },
+      {
+        "label": "Summit elevation",
+        "value": "2,465 m — highest peak in the Visayas"
+      },
+      {
+        "label": "Ranking",
+        "value": "Highest mountain on Negros Island; 42nd-highest island peak on Earth"
+      },
+      {
+        "label": "Eruption record",
+        "value": "40+ eruptions since 1819 — the most active volcano in the Visayas"
+      },
+      {
+        "label": "Eruption style",
+        "value": "Usually phreatic — ash and steam from the summit Lugud crater"
+      },
+      {
+        "label": "Name origin",
+        "value": "\"Place of Laon\", after the pre-colonial Visayan goddess of creation and agriculture"
+      },
+      {
+        "label": "Notable deposit",
+        "value": "La Castellana debris avalanche — 13 km³ over a 33 km run-out, the largest known debris flow in the Philippines"
+      },
+      {
+        "label": "Current status",
+        "value": "2024–2026 unrest — VEI 3 eruption, 87,000 evacuated"
+      }
+    ],
+    "refs": [
+      {
+        "n": 4,
+        "label": "\"Kanlaon\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Kanlaon"
+      },
+      {
+        "n": 5,
+        "label": "Kanlaon Volcano, PHIVOLCS",
+        "url": "https://volcano.si.edu/volcano.cfm?vn=272020"
+      },
+      {
+        "n": 6,
+        "label": "Daita et al. (2024), \"Geologically young block-and-ash flow deposits of Isarog Volcano\"",
+        "url": "https://doi.org/10.13140/RG.2.2.19763.95529"
+      },
+      {
+        "n": 7,
+        "label": "\"Kanlaon Volcano erupts, Alert Level raised to 3\", Philstar, 9 Dec 2024",
+        "url": "https://www.philstar.com/news/2024/12/09/2424793/kanlaon-volcano-erupts-alert-level-raised-3"
+      }
+    ]
+  },
+  "mtisarog": {
+    "name": "Mount Isarog",
+    "region": "Camarines Sur, Bicol",
+    "kind": "Volcano",
+    "arc": "Bicol Volcanic Arc",
+    "elevation_m": 2000,
+    "short": "Dormant stratovolcano, Camarines Sur",
+    "summary": "Active stratovolcano on the Bicol Volcanic Arc, 2,000 m high with a 2,500 m-wide summit crater breached east and drained by the Rangas River.[^8] A Holocene sector collapse of its northwestern flank sent the **Tinambac debris avalanche** all the way into San Miguel Bay.[^8] Its last eruption was in the 12th century CE — a potsherd found under the ash proves people already lived at Goa at the time.[^9] It shows gas seepages, warm springs and steaming vents today.[^8] The summit is the meeting point of six municipalities and Naga City.[^8] It is an ultra-prominent peak, and home to endemic species including the Isarog shrew rat, the Isarog cloud frog and the Isarog forest skink.[^10]",
+    "facts": [
+      {
+        "label": "Volcanic arc",
+        "value": "Bicol Volcanic Arc"
+      },
+      {
+        "label": "Type",
+        "value": "Active stratovolcano"
+      },
+      {
+        "label": "Summit elevation",
+        "value": "2,000 m"
+      },
+      {
+        "label": "Summit crater",
+        "value": "2,500 m wide, breached east and drained by the Rangas River"
+      },
+      {
+        "label": "Notable deposit",
+        "value": "Tinambac debris avalanche — Holocene northwest flank sector collapse into San Miguel Bay"
+      },
+      {
+        "label": "Last eruption",
+        "value": "12th century CE — a potsherd under the ash proves people already lived at Goa"
+      },
+      {
+        "label": "Present activity",
+        "value": "Gas seepages, warm springs and steaming vents"
+      },
+      {
+        "label": "Jurisdiction",
+        "value": "The summit is the meeting point of six municipalities and Naga City"
+      },
+      {
+        "label": "Biodiversity",
+        "value": "Endemic Isarog shrew rat, Isarog cloud frog and Isarog forest skink"
+      }
+    ],
+    "refs": [
+      {
+        "n": 8,
+        "label": "\"Isarog\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Isarog"
+      },
+      {
+        "n": 9,
+        "label": "\"800-Year-Old Eruption: Pre-Hispanic Bicolanos witnessed Isarog fury\", Bicol Mail, 13 Dec 2024",
+        "url": "https://bicolmail.com/2024/12/13/800-year-old-eruption-pre-hispanic-bicolanos-witnessed-isarog-fury/"
+      },
+      {
+        "n": 10,
+        "label": "Kennerley (2019), Rhynchomys isarogensis, IUCN Red List",
+        "url": "https://www.iucnredlist.org/species/19712/22438209"
+      }
+    ]
+  },
+  "mtbuddajo": {
+    "name": "Mount Bud Dajo",
+    "region": "Sulu, Bangsamoro",
+    "kind": "Volcano",
+    "arc": "Zamboanga–Sulu volcanic arc",
+    "elevation_m": 620,
+    "short": "Cinder cone, Sulu Archipelago",
+    "summary": "A 620 m **cinder cone** on Jolo island, part of the Zamboanga–Sulu volcanic arc, and the second-highest point in Sulu.[^11] The summit crater is 0.5 km across and breached to the southwest, and the cone's base spans 9.5 km.[^12] The volcano is extinct — its last eruption date is unknown, and PHIVOLCS monitoring surveys in 1993 and 1997 found nothing unusual.[^11] It has been a sacred mountain to the Tausug people since before Spanish contact, and became Mount Dajo National Park in 1938.[^11] It is also remembered as the site of the 1906 First Battle of Bud Dajo.[^13]",
+    "facts": [
+      {
+        "label": "Volcanic arc",
+        "value": "Zamboanga–Sulu volcanic arc"
+      },
+      {
+        "label": "Type",
+        "value": "Extinct cinder cone on Jolo island"
+      },
+      {
+        "label": "Elevation",
+        "value": "620 m — second-highest point in Sulu"
+      },
+      {
+        "label": "Summit crater",
+        "value": "0.5 km across, breached to the southwest"
+      },
+      {
+        "label": "Base diameter",
+        "value": "9.5 km"
+      },
+      {
+        "label": "Last eruption",
+        "value": "Unknown — PHIVOLCS monitoring surveys in 1993 and 1997 found nothing unusual"
+      },
+      {
+        "label": "Cultural significance",
+        "value": "Sacred mountain to the Tausug people since before Spanish contact"
+      },
+      {
+        "label": "Protected area",
+        "value": "Mount Dajo National Park (1938)"
+      },
+      {
+        "label": "History",
+        "value": "Site of the 1906 First Battle of Bud Dajo"
+      }
+    ],
+    "refs": [
+      {
+        "n": 11,
+        "label": "\"Bud Dajo\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Bud_Dajo"
+      },
+      {
+        "n": 12,
+        "label": "\"Jolo\", Global Volcanism Program",
+        "url": "https://volcano.si.edu/volcano.cfm?vn=273075"
+      },
+      {
+        "n": 13,
+        "label": "Charbonneau (2021), Civilizational Imperatives, Ateneo de Manila UP",
+        "url": "https://books.google.com/books?id=1UyFEAAAQBAJ"
+      }
+    ]
+  },
+  "mtpinatubo": {
+    "name": "Mount Pinatubo",
+    "region": "Zambales / Tarlac / Pampanga, Central Luzon",
+    "kind": "Volcano",
+    "arc": "Zambales Mountains",
+    "elevation_m": 1486,
+    "short": "1991 eruption reshaped Zambales",
+    "summary": "Active stratovolcano in the Zambales Mountains, now 1,486 m — it stood at 1,745 m before 15 June 1991, when it produced a **VEI 6 eruption**, the second-largest terrestrial eruption of the 20th century.[^14] It ejected about 10 km³ of magma and a 35 km ash column, put more particulate into the stratosphere than any eruption since Krakatoa, and cooled global temperatures by roughly 0.5 °C across 1991–1993.[^14] It happened to coincide with Typhoon Yunya, whose rain and wind drove the ash into communities already buried by pyroclastic flows.[^15] The 2.5 km caldera now holds Lake Pinatubo, drained by hand in 2001 after fears of a wall collapse.[^16] The Aeta people of the surrounding slopes hold ancestral domain titles over parts of the mountain.[^17] Last eruption: a weak phreatic explosion on 30 November 2021.[^18]",
+    "facts": [
+      {
+        "label": "Range",
+        "value": "Zambales Mountains"
+      },
+      {
+        "label": "Type",
+        "value": "Active stratovolcano"
+      },
+      {
+        "label": "Summit elevation",
+        "value": "1,486 m (1,745 m before the 1991 eruption)"
+      },
+      {
+        "label": "Signature event",
+        "value": "VEI 6 eruption, 15 June 1991 — second-largest terrestrial eruption of the 20th century"
+      },
+      {
+        "label": "Ejecta",
+        "value": "~10 km³ of magma and a 35 km ash column"
+      },
+      {
+        "label": "Global effect",
+        "value": "Cooled global temperatures by roughly 0.5 °C across 1991–1993; more stratospheric particulate than any eruption since Krakatoa"
+      },
+      {
+        "label": "Coincidence",
+        "value": "Typhoon Yunya drove ash into communities already buried by pyroclastic flows"
+      },
+      {
+        "label": "Crater lake",
+        "value": "2.5 km caldera now holds Lake Pinatubo, drained by hand in 2001 after fears of a wall collapse"
+      },
+      {
+        "label": "Indigenous",
+        "value": "The Aeta people hold ancestral domain titles over parts of the mountain"
+      },
+      {
+        "label": "Last eruption",
+        "value": "Weak phreatic explosion, 30 November 2021"
+      }
+    ],
+    "refs": [
+      {
+        "n": 14,
+        "label": "\"Pinatubo\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Pinatubo"
+      },
+      {
+        "n": 15,
+        "label": "\"The Cataclysmic 1991 Eruption of Mount Pinatubo, Philippines\", USGS",
+        "url": "https://pubs.usgs.gov/publication/fs143"
+      },
+      {
+        "n": 16,
+        "label": "\"Filipinos return as volcano lake drains\", BBC News, 7 Sep 2001",
+        "url": "https://news.bbc.co.uk/2/hi/asia-pacific/1531448.stm"
+      },
+      {
+        "n": 17,
+        "label": "\"Aetas granted first ancestral domain title on Mt. Pinatubo\", Inquirer, 14 Jan 2010",
+        "url": "https://newsinfo.inquirer.net/2010/01/14/174182/americas/aetas-receive-title-to-domain-at-mt-pinatubo"
+      },
+      {
+        "n": 18,
+        "label": "\"PHIVOLCS confirms Mount Pinatubo phreatic eruption\", ABS-CBN News, 30 Nov 2021",
+        "url": "https://news.abs-cbn.com/news/regional-news/national/8976269/phivolcs-confirms-mt-pinatubo-phreatic-eruption"
+      }
+    ]
+  },
+  "mttaal": {
+    "name": "Mount Taal",
+    "region": "Batangas, CALABARZON",
+    "kind": "Volcano",
+    "arc": "Taal Caldera",
+    "elevation_m": 311,
+    "short": "Volcano island in a caldera lake",
+    "summary": "A 25–30 km flooded caldera, the second most active volcano in the Philippines with 39 confirmed historical eruptions, and one of the Smithsonian's \"Decade Volcanoes\" for its deadly proximity to populated land.[^19] Volcano Island sits in the middle of Taal Lake, and its 2 km Main Crater holds a lake with Vulcan Point, a small rocky islet that was one of the largest third-order islands in the world.[^20] The 1754 VEI 5 eruption was its largest; the 1911 eruption killed about 1,100 people, obliterated the crater floor and created the crater lake.[^21] The overall recorded death toll is around 6,000.[^19] Volcano Island is permanently off-limits — a Permanent Danger Zone.[^22] Last eruption: 8 October 2026.[^23]",
+    "facts": [
+      {
+        "label": "Type",
+        "value": "25–30 km flooded caldera"
+      },
+      {
+        "label": "Activity",
+        "value": "Second most active volcano in the Philippines — 39 confirmed historical eruptions"
+      },
+      {
+        "label": "Global listing",
+        "value": "One of the Smithsonian's \"Decade Volcanoes\""
+      },
+      {
+        "label": "Summit feature",
+        "value": "Volcano Island in Taal Lake; 2 km Main Crater lake holding Vulcan Point"
+      },
+      {
+        "label": "Largest eruption",
+        "value": "VEI 5, 1754"
+      },
+      {
+        "label": "Deadliest eruption",
+        "value": "1911 — ~1,100 killed, crater floor obliterated and the crater lake formed"
+      },
+      {
+        "label": "Recorded death toll",
+        "value": "Around 6,000"
+      },
+      {
+        "label": "Access",
+        "value": "Volcano Island is permanently off-limits — a Permanent Danger Zone"
+      },
+      {
+        "label": "Last eruption",
+        "value": "8 October 2026"
+      }
+    ],
+    "refs": [
+      {
+        "n": 19,
+        "label": "\"Taal Volcano\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Taal"
+      },
+      {
+        "n": 20,
+        "label": "\"Taal Volcano Main Crater Lake and Vulcan Point\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Taal_Volcano_Main_Crater_Lake"
+      },
+      {
+        "n": 21,
+        "label": "\"Report of the 1911 eruption of Taal Volcano\", PHIVOLCS (via Newhall & Punongbayan, 1996)",
+        "url": "https://pubs.usgs.gov/publication/fs144"
+      },
+      {
+        "n": 22,
+        "label": "Taal Volcano, PHIVOLCS",
+        "url": "https://volcano.si.edu/volcano.cfm?vn=273083"
+      },
+      {
+        "n": 23,
+        "label": "\"Taal Volcano\", Wikipedia (last eruption 8 Oct 2026)",
+        "url": "https://en.wikipedia.org/wiki/Mount_Taal"
+      }
+    ]
+  },
+  "mtbanahaw": {
+    "name": "Mount Banahaw",
+    "region": "Laguna / Quezon, CALABARZON",
+    "kind": "Volcano",
+    "arc": "Luzon Volcanic Arc",
+    "elevation_m": 2170,
+    "short": "Dormant volcano, Quezon/Laguna",
+    "summary": "A three-peaked **active complex volcano** on the Luzon Volcanic Arc, 2,170 m — the highest mountain in Laguna, in Quezon, and in the whole CALABARZON region.[^24] Its summit holds a 1.5 × 3.5 km, 210 m-deep caldera, breached on the southern rim by the 1730 eruption; a lake occupied the crater before that, and the resulting mudflow destroyed the town of Sariaya below the mountain.[^25] It is a sacred mountain and a long-standing pilgrimage destination, and its springs are drawn from for \"holy water\".[^25] The surrounding Makiling–Banahaw Watershed supplies steam for power generation.[^26] Most of it lies in the Mounts Banahaw–San Cristobal Protected Landscape (10,901 ha); climbing has been suspended since 2004, with some sections reopened in 2019.[^27] Four endemic rodents live here, including the Banahaw tree mouse.[^28]",
+    "facts": [
+      {
+        "label": "Volcanic arc",
+        "value": "Luzon Volcanic Arc"
+      },
+      {
+        "label": "Type",
+        "value": "Three-peaked active complex volcano"
+      },
+      {
+        "label": "Summit elevation",
+        "value": "2,170 m — highest in Laguna, Quezon and CALABARZON"
+      },
+      {
+        "label": "Caldera",
+        "value": "1.5 × 3.5 km, 210 m deep; southern rim breached by the 1730 eruption"
+      },
+      {
+        "label": "1730 event",
+        "value": "A pre-existing crater lake burst into a mudflow that destroyed Sariaya"
+      },
+      {
+        "label": "Cultural significance",
+        "value": "Sacred mountain and long-standing pilgrimage destination; springs drawn for \"holy water\""
+      },
+      {
+        "label": "Watershed",
+        "value": "Makiling–Banahaw Watershed supplies steam for power generation"
+      },
+      {
+        "label": "Protected area",
+        "value": "Mounts Banahaw–San Cristobal Protected Landscape (10,901 ha)"
+      },
+      {
+        "label": "Access",
+        "value": "Climbing suspended since 2004; some sections reopened in 2019"
+      },
+      {
+        "label": "Biodiversity",
+        "value": "Four endemic rodents, including the Banahaw tree mouse"
+      }
+    ],
+    "refs": [
+      {
+        "n": 24,
+        "label": "\"Banahaw\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Banahaw"
+      },
+      {
+        "n": 25,
+        "label": "\"Mount Banahaw\", PinoyMountaineer, 1 Jan 2009",
+        "url": "https://pinoymountaineer.com/2009/01/mount-banahaw/"
+      },
+      {
+        "n": 26,
+        "label": "\"Makiling-Banahaw Watershed\", National Power Corporation",
+        "url": "https://www.napocor.gov.ph/About-Us/Our-Business/Makiling-Banahaw-Watershed"
+      },
+      {
+        "n": 27,
+        "label": "\"Mt. Banahaw still closed to trekkers — DENR\", Philstar, 1 Jun 2022",
+        "url": "https://www.philstar.com/news/2022/06/01/2191140/mt-banahaw-still-closed-trekkers-denr"
+      },
+      {
+        "n": 28,
+        "label": "Balete et al. (2007), \"Two new species of Rhynchomys from Luzon\", Journal of Mammalogy 88(2)",
+        "url": "https://doi.org/10.1644/06-MAMM-A-090R.1"
+      }
+    ]
+  },
+  "mthibokhibok": {
+    "name": "Mount Hibok-Hibok",
+    "region": "Camiguin, Northern Mindanao",
+    "kind": "Volcano",
+    "arc": "Camiguin volcanic arc",
+    "elevation_m": 1332,
+    "short": "Active stratovolcano, Camiguin",
+    "summary": "An active stratovolcano on **Camiguin island** — the Philippines' only volcanic island — 1,332 m high with a 10 km base, also known as Catarman Volcano.[^29] It has erupted four times in modern history. The 1871 flank eruption built the cone of Mount Vulcan, the youngest volcano on the island.[^30] The 1948–51 sequence was the deadly one: the 1951 eruption on 4 December killed over 3,000 people, and Camiguin's population fell from 69,000 to about 34,000 through emigration.[^31] It has six hot springs and three craters, and the nearby White Island is a popular dive.[^29] Together with Mount Timpoong it forms a natural monument that became an ASEAN Heritage Park in 2015.[^32]",
+    "facts": [
+      {
+        "label": "Location",
+        "value": "Camiguin island — the Philippines' only volcanic island"
+      },
+      {
+        "label": "Type",
+        "value": "Active stratovolcano, also known as Catarman Volcano"
+      },
+      {
+        "label": "Summit elevation",
+        "value": "1,332 m, with a 10 km base"
+      },
+      {
+        "label": "Eruption record",
+        "value": "Four eruptions in modern history"
+      },
+      {
+        "label": "1871",
+        "value": "Flank eruption built the cone of Mount Vulcan, the youngest volcano on the island"
+      },
+      {
+        "label": "1948–51 sequence",
+        "value": "The 4 December 1951 eruption killed over 3,000; Camiguin's population fell from 69,000 to about 34,000"
+      },
+      {
+        "label": "Features",
+        "value": "Six hot springs and three craters; nearby White Island is a popular dive"
+      },
+      {
+        "label": "Heritage",
+        "value": "With Mount Timpoong, an ASEAN Heritage Park (2015)"
+      }
+    ],
+    "refs": [
+      {
+        "n": 29,
+        "label": "\"Mount Hibok-Hibok\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Mount_Hibok-Hibok"
+      },
+      {
+        "n": 30,
+        "label": "Becker (1901), Report on the Geology of the Philippine Islands, US Government Printing Office",
+        "url": "https://archive.org/details/reportongeologyo00beckuoft"
+      },
+      {
+        "n": 31,
+        "label": "\"Hibok-Hibok Volcano\", Global Volcanism Program",
+        "url": "https://volcano.si.edu/volcano.cfm?vn=272020"
+      },
+      {
+        "n": 32,
+        "label": "\"Camiguin's Timpoong, Hibok-Hibok declared ASEAN Heritage Park\", Inquirer, 16 Mar 2016",
+        "url": "https://newsinfo.inquirer.net/2016/03/16/1357209/life-environment-and-biology/camiguins-timpoong-hibok-hibok-declared-asean-heritage-park"
+      }
+    ]
+  },
+  "lakebuhi": {
+    "name": "Lake Buhi",
+    "region": "Camarines Sur, Bicol",
+    "kind": "Lake",
+    "arc": "Bicol Volcanic Arc (Mount Iriga)",
+    "elevation_m": 120,
+    "short": "Camarines Sur lake, Iriga volcano",
+    "summary": "Not a volcano but a volcanic accident: a **1,707 ha lake** (17.07 km², 8 m average depth, 120 m surface elevation) formed in 1641 when an earthquake caused one flank of Mount Iriga — also called Mount Asog — to collapse, the landslide creating a natural dam across the local streams.[^33] It is famous for the **sinarapan** (*Mistichthys luzonensis*), the world's smallest commercially harvested fish.[^34] The lake also feeds the National Power Corporation's hydro plant (about 2.8 MW) and irrigates at least 100 km² of the Riconada towns downstream.[^35] The surrounding forest holds five endemic bird species.[^34]",
+    "facts": [
+      {
+        "label": "Type",
+        "value": "Volcanic accident — a landslide-dammed lake, not a volcano"
+      },
+      {
+        "label": "Surface area",
+        "value": "1,707 ha (17.07 km²)"
+      },
+      {
+        "label": "Depth",
+        "value": "8 m average"
+      },
+      {
+        "label": "Surface elevation",
+        "value": "120 m"
+      },
+      {
+        "label": "Formation",
+        "value": "1641 — an earthquake collapsed a flank of Mount Iriga (Mount Asog); the landslide dammed the local streams"
+      },
+      {
+        "label": "Known for",
+        "value": "The sinarapan (Mistichthys luzonensis) — the world's smallest commercially harvested fish"
+      },
+      {
+        "label": "Hydropower",
+        "value": "Feeds the National Power Corporation's hydro plant (about 2.8 MW)"
+      },
+      {
+        "label": "Irrigation",
+        "value": "At least 100 km² of the Riconada towns downstream"
+      },
+      {
+        "label": "Biodiversity",
+        "value": "Five endemic bird species in the surrounding forest"
+      }
+    ],
+    "refs": [
+      {
+        "n": 33,
+        "label": "\"Lake Buhi\", Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Lake_Buhi"
+      },
+      {
+        "n": 34,
+        "label": "\"Rediscovering Lake Buhi: Home of the World's Smallest Edible Fish\", Haribon Foundation",
+        "url": "https://haribonfoundation.org/2006/02/rediscovering-lake-buhi-home-of-the-worlds-smallest-edible-fish/"
+      },
+      {
+        "n": 35,
+        "label": "\"Lake Buhi\", World Lakes Database, International Lake Environment Committee (archived)",
+        "url": "https://web.archive.org/web/20090419040814/http://www.ilec.net/db/databases/ILCDatabase/Lakes/tabid/158/ArticleID/196/language/Default.aspx"
+      }
+    ]
+  }
+}

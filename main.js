@@ -2,12 +2,20 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/OrbitControls.js';
 import { OBJLoader } from 'three/addons/OBJLoader.js';
 import { GLTFLoader } from 'three/addons/GLTFLoader.js';
+import { loadSiteInfo, openSiteInfo } from './siteinfo.js?v=1';
 
 const el = (id) => document.getElementById(id);
 const infoEl = el('info');
 const loadEl = el('loading');
 const loadLabel = el('loadLabel');
 const loadBar = el('loadBar');
+
+// Fallback display name for a dataset id ("mtmayon" -> "Mount Mayon").
+// data/site_info.json carries the authoritative name when a site has
+// notes, so this only has to be good enough for undocumented datasets.
+const pretty = (s) => String(s).replace(/^mt/i, 'Mount ').replace(/^lake/i, 'Lake ')
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/\b([a-z])/g, (c) => c.toUpperCase());
 
 function showError(msg) {
   el('errMsg').textContent = msg;
@@ -65,6 +73,27 @@ async function main() {
   // Appearance theme from the manifest (export --theme); falls back to
   // the default light theme. Scene background follows the theme too.
   document.body.dataset.theme = manifest.theme || 'light';
+
+  // "About this site" notes — hand-written prose per dataset, keyed by
+  // the dataset id (manifest.name) in data/site_info.json. Loaded once,
+  // up front: the names it carries are authoritative (site_info.json
+  // knows "Mount Bud Dajo" where the id-derived fallback cannot), and
+  // the About button must be usable while the large scene still loads.
+  const siteInfo = await loadSiteInfo();
+  const siteEntry = siteInfo[manifest.name] || null;
+  const siteName = (siteEntry && siteEntry.name) || pretty(manifest.name);
+  const nameOf = (id) => (siteInfo[id] && siteInfo[id].name) || pretty(id);
+  const aboutSection = el('aboutSection');
+  const aboutBtn = el('aboutBtn');
+  if (aboutSection && aboutBtn && siteEntry) {
+    aboutSection.style.display = '';
+    aboutBtn.textContent = 'About ' + siteName;
+    aboutBtn.onclick = () => openSiteInfo(manifest.name, { syncUrl: true });
+    // ?info=1 deep link: open the notes straight away.
+    if (params.get('info')) openSiteInfo(manifest.name, { syncUrl: true });
+  }
+  const dsTitle = el('dsTitle');
+  if (dsTitle) dsTitle.textContent = siteName;
 
   const container = document.getElementById('app');
   const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -254,9 +283,6 @@ async function main() {
   const homeTarget = controls.target.clone();
   const homeFov = camera.fov;
 
-  const pretty = (s) => s.replace(/^mt/i, 'Mount ').replace(/^lake/i, 'Lake ')
-      .replace(/([a-z])([A-Z])/g, '$1 $2')
-      .replace(/\b([a-z])/g, (c) => c.toUpperCase());
   infoEl.innerHTML =
     `${manifest.tiles.length} tiles · extent ${Math.round(size.x)} × ${Math.round(size.y)} m<br>` +
     `elevation ${zRange[0].toFixed(1)} … ${zRange[1].toFixed(1)} m<br>` +
@@ -489,15 +515,11 @@ async function main() {
   datasetList.forEach((d) => {
     const o = document.createElement('option');
     o.value = d.file;
-    o.textContent = pretty(d.label);
+    o.textContent = nameOf(d.label);
     if (d.file === currentM) o.selected = true;
     dsSel.appendChild(o);
   });
   dsSel.onchange = () => { location.search = '?m=' + dsSel.value; };
-  // dsSel.querySelectorAll('option').forEach((o) => {
-  //   o.textContent = o.textContent.replace(/^mt/i, 'Mount ').replace(/^lake/i, 'Lake ')
-  //     .replace(/([a-z])([A-Z])/g, '$1 $2');
-  // });
 
   // Collapsible panel; start collapsed on small screens.
   const panel = el('panel');

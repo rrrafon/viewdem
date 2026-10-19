@@ -61,61 +61,139 @@
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       max-width: 1200px; margin: 0 auto;
     }
-    a.card {
-      display: block; text-decoration: none; color: inherit;
+    /* The card is a shell holding the link plus a separate notes button (a
+       button may not legally sit inside an <a>, so the card is no longer
+       the anchor itself). */
+    .card {
+      display: flex; flex-direction: column; overflow: hidden;
       background: var(--card); border: 1px solid var(--card-border);
-      border-radius: 12px; overflow: hidden;
+      border-radius: 12px;
       transition: transform .15s ease, border-color .15s ease;
     }
-    a.card:hover, a.card:focus-visible {
-      transform: translateY(-3px); border-color: var(--accent);
-    }
-    a.card img {
+    .card:hover, .card:focus-within { transform: translateY(-3px); border-color: var(--accent); }
+    .card > a.card-link { display: block; text-decoration: none; color: inherit; }
+    .card img {
       display: block; width: 100%; aspect-ratio: 1; object-fit: cover;
       background: #05070c;
     }
     .card-body { padding: 10px 14px 14px; }
     .card-body h2 { margin: 0; font-size: 1.05rem; }
     .card-body p { margin: 4px 0 0; font-size: .85rem; color: var(--muted); }
+    .card-foot { margin-top: auto; padding: 0 14px 14px; }
+    .card-info {
+      width: 100%; min-height: 38px; cursor: pointer;
+      border: 1px solid var(--card-border); border-radius: 8px;
+      background: transparent; color: var(--fg); font-size: .85rem;
+    }
+    .card-info:hover { border-color: var(--accent); color: var(--accent); }
+    .card-info:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .card-thumb-missing {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; aspect-ratio: 1; font-size: 3rem; color: #33415c;
+      background: linear-gradient(160deg, #18202f, #0c1220);
+    }
+    .empty { grid-column: 1 / -1; color: var(--muted); text-align: center; padding: 40px 0; }
   </style>
 </head>
 <body>
   <header>
     <h1>DEM Viewer — Philippine Volcanoes &amp; Lakes</h1>
-    <p class="sub">Interactive 3D terrain for nine sites: Copernicus DEM elevation,
+    <p class="sub">Interactive 3D terrain for <span id="siteCount">…</span> sites: Copernicus DEM elevation,
       Sentinel-2 imagery, OpenStreetMap buildings. Click a mountain to fly in.</p>
   </header>
   <main id="grid" aria-label="Datasets"></main>
-  <script>
+  <script type="module">
+    import { loadSiteInfo, openSiteInfo } from './siteinfo.js?v=1';
+
+    // Dataset names are not hard-coded here: the landing page is shared by
+    // every site this project scaffolds, so it reads whatever the site
+    // actually holds (data/datasets.json) and enriches it with the
+    // hand-written notes (data/site_info.json).
+    const pretty = (s) => String(s).replace(/^mt/i, 'Mount ').replace(/^lake/i, 'Lake ')
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        .replace(/\b([a-z])/g, (c) => c.toUpperCase());
+
+    const readJson = async (url) => {
+      try {
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return { ok: true, data: await res.json() };
+      } catch (e) {
+        console.warn(`${url} unavailable:`, e.message);
+        return { ok: false, data: null };
+      }
+    };
+
     (async () => {
-      const DATASETS = [
-        { id: 'mtmayon',     label: 'Mount Mayon',       desc: 'Perfect-cone stratovolcano, Albay' },
-        { id: 'mtkanlaon',   label: 'Mount Kanlaon',     desc: 'Highest point in the Visayas' },
-        { id: 'mtisarog',    label: 'Mount Isarog',      desc: 'Dormant stratovolcano, Camarines Sur' },
-        { id: 'mtbuddajo',   label: 'Mount Bud Dajo',    desc: 'Cinder cone, Sulu Archipelago' },
-        { id: 'mtpinatubo',  label: 'Mount Pinatubo',    desc: '1991 eruption reshaped Zambales' },
-        { id: 'mttaal',      label: 'Mount Taal',        desc: 'Volcano island in a caldera lake' },
-        { id: 'mtbanahaw',   label: 'Mount Banahaw',     desc: 'Dormant volcano, Quezon/Laguna' },
-        { id: 'mthibokhibok',label: 'Mount Hibok-Hibok', desc: 'Active stratovolcano, Camiguin' },
-        { id: 'lakebuhi',    label: 'Lake Buhi',         desc: 'Camarines Sur lake, Iriga volcano' },
-      ];
       const grid = document.getElementById('grid');
-      for (const d of DATASETS) {
+      const [reg, notes] = await Promise.all([
+        readJson('./data/datasets.json'),
+        loadSiteInfo(),
+      ]);
+
+      // The registry is the source of truth for what the site holds. If it
+      // is present, use it as-is — an empty registry means the site has no
+      // datasets yet. Only when it is missing do we fall back to the ids
+      // the notes mention.
+      const registry = reg.ok && Array.isArray(reg.data) ? reg.data : null;
+      const datasets = (registry || Object.keys(notes).map((id) => ({ label: id })))
+        .map((d) => ({ id: d.label, file: d.file || `manifest_${d.label}.json` }));
+
+      if (!datasets.length) {
+        const p = document.createElement('p');
+        p.className = 'empty';
+        p.textContent = 'No datasets have been exported into this site yet.';
+        grid.appendChild(p);
+        return;
+      }
+      const count = document.getElementById('siteCount');
+      if (count) count.textContent = String(datasets.length);
+
+      for (const { id, file } of datasets) {
+        const entry = notes[id] || {};
+        const title = entry.name || pretty(id);
+        const card = document.createElement('article');
+        card.className = 'card';
         const a = document.createElement('a');
-        a.className = 'card';
-        a.href = './?m=manifest_' + d.id + '.json';
-        a.setAttribute('aria-label', d.label + ' — open 3D terrain');
+        a.className = 'card-link';
+        a.href = './?m=' + file;
+        a.setAttribute('aria-label', title + ' — open 3D terrain');
         const img = document.createElement('img');
-        img.src = './thumbnails/' + d.id + '.png';
-        img.alt = d.label + ' terrain preview';
+        img.src = './thumbnails/' + id + '.png';
+        img.alt = title + ' terrain preview';
         img.loading = 'lazy';
+        // No thumbnail for this dataset — show a neutral placeholder
+        // instead of a broken image.
+        img.addEventListener('error', () => {
+          const ph = document.createElement('div');
+          ph.className = 'card-thumb-missing';
+          ph.textContent = '⛰';
+          ph.setAttribute('aria-hidden', 'true');
+          img.replaceWith(ph);
+        });
         const body = document.createElement('div');
         body.className = 'card-body';
         body.innerHTML = '<h2></h2><p></p>';
-        body.querySelector('h2').textContent = d.label;
-        body.querySelector('p').textContent = d.desc;
+        body.querySelector('h2').textContent = title;
+        body.querySelector('p').textContent = entry.short || '';
         a.append(img, body);
-        grid.appendChild(a);
+        card.appendChild(a);
+        // Notes button — only for datasets site_info.json knows about, so
+        // an undocumented dataset simply shows no button.
+        if (notes[id]) {
+          const foot = document.createElement('div');
+          foot.className = 'card-foot';
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'card-info';
+          btn.setAttribute('data-site-info', id);
+          btn.textContent = 'Read the notes';
+          btn.setAttribute('aria-label', 'Read notes about ' + title);
+          btn.onclick = () => openSiteInfo(id);
+          foot.appendChild(btn);
+          card.appendChild(foot);
+        }
+        grid.appendChild(card);
       }
     })();
   </script>

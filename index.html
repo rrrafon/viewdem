@@ -245,6 +245,9 @@
   <header id="panelHead"><button id="collapseBtn" aria-label="collapse panel">–</button></header>
   <div id="panelBody">
     <section><div class="stitle">Dataset</div><select id="dsSel" style="width:100%;min-height:42px;font-size:13px;border:1px solid var(--btn-border);border-radius:4px;background:var(--btn-bg);color:var(--btn-fg);padding:6px;"></select></section>
+    <section id="aboutSection" style="display:none"><div class="stitle">About this site</div>
+      <button id="aboutBtn" class="dsbtn" style="width:100%;min-height:42px;cursor:pointer">Loading notes…</button>
+    </section>
     <section><div class="stitle">Display</div><div class="seg" id="modeSeg">
       <button data-mode="untextured">Untextured</button><button data-mode="textured">Textured</button><button data-mode="hillshade">Hillshade</button>
     </div>
@@ -298,6 +301,6 @@
       location.replace('./landing.html');
     }
   </script>
-  <script type="module" src="./main.js?v=38"></script>
+  <script type="module" src="./main.js?v=39"></script>
 </body>
 </html>
