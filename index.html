@@ -250,10 +250,14 @@
       <button id="aboutBtn" class="dsbtn" style="width:100%;min-height:42px;cursor:pointer">Loading notes…</button>
     </section>
     <section><div class="stitle">Display</div><div class="seg" id="modeSeg">
-      <button data-mode="untextured">Untextured</button><button data-mode="textured">Textured</button><button data-mode="hillshade">Hillshade</button>
+      <button data-mode="untextured">Terrain</button><button data-mode="textured">Textured</button><button data-mode="hillshade">Hillshade</button><button data-mode="height">Height</button>
     </div>
       <div class="rowline" style="margin-top:4px"><label for="colUntex">Terrain color</label><input type="color" id="colUntex" value="#9aa37a" style="width:44px;height:32px;padding:0;border:1px solid #bbb"></div>
       <div class="rowline"><label for="colHill">Hillshade color</label><input type="color" id="colHill" value="#ffffff" style="width:44px;height:32px;padding:0;border:1px solid #bbb"></div>
+      <div class="rowline" style="margin-top:4px"><span>Specular</span><span id="specIntVal">0.00</span></div>
+      <input id="specInt" type="range" min="0" max="1" value="0" step="0.05">
+      <div class="rowline"><span>Gloss</span><span id="specShineVal">30</span></div>
+      <input id="specShine" type="range" min="1" max="100" value="30" step="1">
     </section>
     <section><div class="stitle">Quality</div><div class="seg" id="qualitySeg">
       <button data-quality="auto">Auto</button><button data-quality="high">High</button><button data-quality="low">Low</button>
@@ -302,6 +306,6 @@
       location.replace('./landing.html');
     }
   </script>
-  <script type="module" src="./main.js?v=41"></script>
+  <script type="module" src="./main.js?v=42"></script>
 </body>
 </html>

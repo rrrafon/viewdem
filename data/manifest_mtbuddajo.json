@@ -10,7 +10,7 @@
   "tile_overlap_px": 0,
   "texture_alpha": true,
   "texture_flip_y": false,
-  "theme": "light",
+  "theme": "dark",
   "vertical_datum": "EGM2008 (COP30)",
   "tiles": [
     {

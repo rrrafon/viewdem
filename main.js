@@ -102,8 +102,8 @@ async function main() {
   const flipY = manifest.texture_flip_y === true;
 
   // Appearance theme from the manifest (export --theme); falls back to
-  // the default light theme. Scene background follows the theme too.
-  document.body.dataset.theme = manifest.theme || 'light';
+  // dark, matching the landing page. Scene background follows the theme too.
+  document.body.dataset.theme = manifest.theme || 'dark';
 
   // "About this site" notes — hand-written prose per dataset, keyed by
   // the dataset id (manifest.name) in data/site_info.json. Loaded once,
@@ -143,14 +143,80 @@ async function main() {
 
   // Untextured + textured materials. Each tile gets its own textured
   // material (map differs per tile); the mode switch swaps mesh.material.
-  const untexturedMat = new THREE.MeshLambertMaterial({ color: 0x9aa37a });
+  // Phong (not Lambert) so a specular highlight can be dialled in; specular
+  // starts black, which renders exactly like the old Lambert material.
+  const untexturedMat = new THREE.MeshPhongMaterial({
+    color: 0x9aa37a, specular: 0x000000, shininess: 30,
+  });
   const texLoader = new THREE.TextureLoader();
   const maxAniso = renderer.capabilities.getMaxAnisotropy();
 
-  // Hillshade = white Lambert + single directional sun, no ambient.
+  // Hillshade = white surface + single directional sun, no ambient.
   // Normal-view lights (sun + hemisphere) and hillshade sun are mutually
-  // exclusive so hillshade stays pure N·L.
-  const hillshadeMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+  // exclusive so hillshade stays pure N·L unless specular is raised.
+  const hillshadeMat = new THREE.MeshPhongMaterial({
+    color: 0xffffff, specular: 0x000000, shininess: 30,
+  });
+
+  // Height = hypsometric tint from per-vertex colors (see applyHeightColors).
+  // Untextured/hillshade specular does not apply here, so it stays diffuse.
+  const heightMat = new THREE.MeshPhongMaterial({
+    vertexColors: true, specular: 0x000000, shininess: 30,
+  });
+
+  // Classic hypsometric ramp: deep green (low) -> green -> yellow -> tan /
+  // orange -> brown -> white (peaks). Stops are t in [0,1] over the dataset
+  // elevation range; colours are lerped in three's working (linear) space.
+  const HYPSO_STOPS = [
+    [0.00, 0x006837],
+    [0.20, 0x4c9f4c],
+    [0.40, 0xa7c957],
+    [0.55, 0xf2e05a],
+    [0.70, 0xd98e3b],
+    [0.85, 0x9c5a2a],
+    [1.00, 0xffffff],
+  ];
+  const hypsoStops = HYPSO_STOPS.map(([t, hex]) => [t, new THREE.Color(hex)]);
+  const hypsoSample = (t, out) => {
+    const u = t < 0 ? 0 : (t > 1 ? 1 : t);
+    let i = hypsoStops.length - 2;
+    while (i > 0 && u < hypsoStops[i][0]) i--;
+    const [t0, c0] = hypsoStops[i];
+    const [t1, c1] = hypsoStops[i + 1];
+    const f = t1 > t0 ? (u - t0) / (t1 - t0) : 0;
+    return out.copy(c0).lerp(c1, f);
+  };
+
+  // Bake a hypsometric `color` attribute onto a terrain geometry once, so the
+  // Height mode toggles instantly (colors travel with the geometry; only the
+  // material is swapped). Uses the dataset-wide Z range when the elevation
+  // grid loaded, else the tile's own span as a fallback.
+  const applyHeightColors = (geo) => {
+    if (geo.getAttribute('color')) return;
+    const pos = geo.getAttribute('position');
+    if (!pos) return;
+    let zmin = zRange[0];
+    let zmax = zRange[1];
+    if (!elevGrid) {
+      zmin = Infinity; zmax = -Infinity;
+      for (let i = 0; i < pos.count; i++) {
+        const z = pos.getZ(i);
+        if (z < zmin) zmin = z;
+        if (z > zmax) zmax = z;
+      }
+      if (!Number.isFinite(zmin) || !Number.isFinite(zmax)) { zmin = 0; zmax = 1; }
+    }
+    const span = Math.max(zmax - zmin, 1e-6);
+    const c = new THREE.Color();
+    const arr = new Uint8Array(pos.count * 3);
+    for (let i = 0; i < pos.count; i++) {
+      hypsoSample((pos.getZ(i) - zmin) / span, c);
+      arr[i * 3] = Math.round(c.r * 255);
+      arr[i * 3 + 1] = Math.round(c.g * 255);
+      arr[i * 3 + 2] = Math.round(c.b * 255);
+    }
+    geo.setAttribute('color', new THREE.BufferAttribute(arr, 3, true));
+  };
 
   const sun = new THREE.DirectionalLight(0xffffff, 1.2);
   sun.position.set(-0.5, -1.0, 1.2);
@@ -230,7 +296,8 @@ async function main() {
   let mode = 'textured'; // declared early so late tiles get the live mode
   const pickTileMaterial = (texturedMat) => mode === 'hillshade'
     ? hillshadeMat
-    : (mode === 'textured' && texturedMat) ? texturedMat : untexturedMat;
+    : mode === 'height' ? heightMat
+      : (mode === 'textured' && texturedMat) ? texturedMat : untexturedMat;
 
   const ox0 = (manifest.origin && manifest.origin[0]) || 0;
   const oy0 = (manifest.origin && manifest.origin[1]) || 0;
@@ -339,6 +406,7 @@ async function main() {
         if (child.isMesh) {
           const geo = child.geometry;
           if (!geo.getAttribute('normal')) geo.computeVertexNormals();
+          applyHeightColors(geo);
           const mesh = new THREE.Mesh(geo, pickTileMaterial(texturedMat));
           mesh.userData.texturedMat = texturedMat;
           mesh.castShadow = true;
@@ -434,6 +502,7 @@ async function main() {
         if (child.isMesh) {
           const g = child.geometry;
           if (!g.getAttribute('normal')) g.computeVertexNormals();
+          applyHeightColors(g);
           const mesh = new THREE.Mesh(g, nowMat);
           mesh.userData.texturedMat = texturedMat;
           mesh.castShadow = true;
@@ -538,6 +607,7 @@ async function main() {
     shadow: chkShadow.checked,
     focal: focal.value,
     colU: colUntex.value, colH: colHill.value,
+    spec: specInt.value, shine: specShine.value,
     quality,
   });
 
@@ -647,7 +717,8 @@ async function main() {
           ? hillshadeMat
           : (mode === 'textured' && child.userData.texturedMat)
             ? child.userData.texturedMat
-            : untexturedMat;
+            : mode === 'height' ? heightMat
+              : untexturedMat;
       }
     });
     buildingsGroup.traverse((child) => {
@@ -707,6 +778,9 @@ async function main() {
     sunAz.value = 315;
     sunAlt.value = 45;
     updateHillSun();
+    specInt.value = '0';
+    specShine.value = '30';
+    applySpecular();
     if (chkShadow) {
       chkShadow.checked = window.innerWidth > 700;
       chkShadow.dispatchEvent(new Event('change'));
@@ -758,7 +832,7 @@ async function main() {
   };
 
   // User-set base colors (persisted). Hillshade stays a single-hue
-  // material so shading remains pure N·L, just tinted.
+  // material so shading remains pure N·L, just tinted (specular optional).
   const colUntex = el('colUntex');
   const colHill = el('colHill');
   colUntex.oninput = () => { untexturedMat.color.set(colUntex.value); persist(); };
@@ -771,6 +845,29 @@ async function main() {
     colHill.value = settings.colH;
     hillshadeMat.color.set(settings.colH);
   }
+
+  // Specular highlight on untextured + hillshade terrain (off by default, so
+  // shading stays pure N·L until the user asks for sheen). Textured tiles and
+  // the Height tint keep their own materials and are unaffected.
+  const specInt = el('specInt');
+  const specShine = el('specShine');
+  const specIntVal = el('specIntVal');
+  const specShineVal = el('specShineVal');
+  const applySpecular = () => {
+    const s = Number(specInt.value);
+    const sh = Number(specShine.value);
+    specIntVal.textContent = s.toFixed(2);
+    specShineVal.textContent = String(sh);
+    for (const m of [untexturedMat, hillshadeMat]) {
+      m.specular.setScalar(s);
+      m.shininess = sh;
+    }
+  };
+  specInt.oninput = () => { applySpecular(); persist(); };
+  specShine.oninput = () => { applySpecular(); persist(); };
+  if (settings.spec !== undefined) specInt.value = String(settings.spec);
+  if (settings.shine !== undefined) specShine.value = String(settings.shine);
+  applySpecular();
 
   const chkBld = manifest.buildings ? el('chkBld') : null;
   if (manifest.buildings) {
@@ -939,7 +1036,7 @@ async function main() {
     el('chkBldAll').checked = true;
     el('chkBldAll').dispatchEvent(new Event('change'));
   }
-  setMode(['untextured', 'textured', 'hillshade'].includes(settings.mode) ? settings.mode : 'textured');
+  setMode(['untextured', 'textured', 'hillshade', 'height'].includes(settings.mode) ? settings.mode : 'textured');
   if (['auto', 'high', 'low'].includes(settings.quality)) {
     quality = settings.quality;
   }
