@@ -1,0 +1,4 @@
+# Intermediate export metadata not used by the viewer
+data/stream/*/L1/*_grid.json
+data/stream/*/L2/*_grid.json
+*.pre_stream.bak

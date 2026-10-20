@@ -12,7 +12,7 @@ const safeRelPath = (p) => {
   return s;
 };
 
-// stream.js -- multi-resolution streaming loader (plan_streaming.md §8.3).
+// stream.js -- multi-resolution streaming loader.
 //
 // Owns data/policy/queue/visibility for tileset pyramids. All three.js
 // scene mutation for tile *content* (materials, shadows) stays in main.js
@@ -46,8 +46,8 @@ export async function startStreaming(env) {
   const dir = basePath + streamingRel.split('/').slice(0, -1).join('/');
 
   // Tileset meshes are origin-relative to tileset.origin, which can differ
-  // slightly from manifest.origin (separate meshing runs). Shift content so
-  // it lands in the manifest frame that scaleGroup recentres.
+  // slightly from manifest.origin. Shift content so it lands in the manifest
+  // frame that scaleGroup recentres.
   const mOx = (manifest.origin && manifest.origin[0]) || 0;
   const mOy = (manifest.origin && manifest.origin[1]) || 0;
   const tOx = (tileset.origin && tileset.origin[0]) || 0;
@@ -206,7 +206,7 @@ export async function startStreaming(env) {
 
   // ---- policy ----
   // Child mapping assumes each level doubles the previous grid (2x2 -> 4x4),
-  // which export_stream.py guarantees via integer-multiple nesting.
+  // which the tileset guarantees via integer-multiple nesting.
   const childrenOf = (rec) => {
     if (rec === l0) return (levelOf(1)?.tiles || []);
     const lv = levelOf(rec.level + 1);

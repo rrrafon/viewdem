@@ -61,8 +61,8 @@ const saveSettings = (s) => {
 async function main() {
   const params = new URLSearchParams(location.search);
   // Default manifest: explicit ?m= wins; else manifest.json; else the
-  // first dataset registered by export_web (fresh single-dataset sites
-  // often only have e.g. mtApo.json).
+  // first dataset in the registry (fresh single-dataset sites often only
+  // have one manifest).
   let manifestFile = safeRelPath(params.get('m') || 'manifest.json');
   if (!manifestFile) {
     showError('Invalid dataset path in ?m=.');
@@ -566,7 +566,7 @@ async function main() {
 
   // Optional buildings layer (second group, same frame). Loads after first
   // paint so it never blocks terrain; single whole-scene file for now
-  // (spatial tiling comes with the streaming exporter).
+  // (spatial tiling is not implemented yet).
   let buildingCount = 0;
   const loadBuildings = async () => {
     if (!manifest.buildings) return;
@@ -612,7 +612,7 @@ async function main() {
   });
 
   // Dataset switcher (URL ?m= stays the source of truth). Populated from
-  // data/datasets.json, which export_web maintains on every export.
+  // data/datasets.json, which is regenerated on export.
   const currentM = manifestFile;
   let datasetList = [{ label: manifest.name, file: currentM }];
   try {
@@ -878,8 +878,8 @@ async function main() {
       persist();
     };
     // Streaming only: opt-in to buildings below L2 (bases may float a few
-    // metres on decimated L0/L1 terrain). Hidden on the classic path, where
-    // the single buildings file always loads with the terrain.
+    // metres on lower-detail L0/L1 terrain). Hidden on the classic path,
+    // where the single buildings file always loads with the terrain.
     const chkBldAll = el('chkBldAll');
     if (manifest.streaming) {
       el('bldAllRow').style.display = '';
@@ -890,8 +890,8 @@ async function main() {
     }
   }
 
-  // Click-to-read elevation (+ lat/lon). Heights come from the source-DEM
-  // grid, NOT the decimated mesh (plan §7: never measure the mesh).
+  // Click-to-read elevation (+ lat/lon). Heights come from the exported
+  // elevation grid, not the rendered mesh.
   // UTM inverse (Snyder series, mm-accurate) avoids a proj library.
   const utmZone = (() => {
     const m = /EPSG:32([67])(\d\d)/.exec(manifest.crs || '');
